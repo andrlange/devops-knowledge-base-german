@@ -33,7 +33,7 @@ Markdown ist damit ein ideales Format für eine offene, durchsuchbare und gemein
 
 Die Inhalte sind thematisch gegliedert in Unterordner, die jeweils eigenständige Bereiche behandeln, z. B.:
 
-- **Programmiersprachen & Frameworks**
+- **Programmiersprachen & Frameworks & Grundkonzepte**
     - `Kotlin` mit `Spring Boot`
     - `Dart` mit `Flutter`
 
@@ -88,6 +88,7 @@ Eine thematisch strukturierte Übersicht aller bisher erfassten Inhalte. Die Pfa
 ### Spring & Spring Boot
 - [Rest Controller und Fehlerbehandlung mit Advices](spring_kotlin/CONTROLLER_ADVICE.md)
 - [Eigene Validatoren für komplexere DTOs](spring_kotlin/CUSTOM_VALIDATORS.md)
+- [Laufzeitmessung mit AOP und ANNOTATION](spring_kotlin/SPRING_AOP_CUSTOM_ANNOTATION.md)
 
 ### Dart & Flutter
 - [Flutter State Management im Überblick](flutter/STATE_MANAGEMENT.md)
