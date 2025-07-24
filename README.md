@@ -83,10 +83,10 @@ Eine thematisch strukturierte Übersicht aller bisher erfassten Inhalte. Die Pfa
 - [Mardown HowTo](markdown/MARKDOWN_HOWTO.md)
 
 ### Kotlin
-- [Virtuelle Threads mit Kotlin & Spring Boot](kotlin/VIRTUAL_THREADS.md)
+- [Virtuelle Threads mit Kotlin & Spring Boot](spring_kotlin/VIRTUAL_THREADS.md)
 
 ### Spring & Spring Boot
-- [Rest Controller und Fehlerbehandlung mit Advices](spring/CONTROLLER_ADVICES.md)
+- [Rest Controller und Fehlerbehandlung mit Advices](spring_kotlin/CONTROLLER_ADVICES.md)
 - 
 ### Dart & Flutter
 - [Flutter State Management im Überblick](flutter/STATE_MANAGEMENT.md)

@@ -26,7 +26,6 @@ Markdown eignet sich hervorragend für:
 ### Überschriften
 
 ```markdown
-
 # H1
 ## H2
 ### H3
@@ -87,7 +86,6 @@ kubectl get pods -n my-namespace
 Blockquote (Zitatblock), und so schreibst du ihn in Markdown:
 
 ```markdown
-
 > ✏️ **Tipp:** Viele Markdown-Editoren (z. B. VS Code, Obsidian) zeigen dir direkt eine Vorschau an. Bei GitHub oder GitLab wird Markdown automatisch gerendert.
 ```
 Ergebnis:
@@ -95,16 +93,16 @@ Ergebnis:
 
 💡 Mehrzeilige Tipps oder Notizen kannst du einfach durch mehrere > Zeilen schreiben:
 ```markdown
-
 > ⚠️ **Hinweis:**
 > Bei GitHub wird Markdown automatisch gerendert.
+>
 > Tabellen, Emojis und Formatierungen funktionieren dort zuverlässig.
-
 ```
 Ergebnis:
 
 > ⚠️ **Hinweis:**
 > Bei GitHub wird Markdown automatisch gerendert.
+> 
 > Tabellen, Emojis und Formatierungen funktionieren dort zuverlässig.
 
 
