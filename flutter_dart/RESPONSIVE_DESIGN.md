@@ -19,11 +19,6 @@ Responsive Design ermöglicht:
 ## 🎯 2. Was ist ein Breakpoint-System?
 
 Ein **Breakpoint** ist eine definierte Bildschirmbreite, bei der das Layout angepasst wird. Typische Kategorien:
-- 📱 Small Mobile (<412px)
-- 📱 Mobile (≤576px)
-- 🧾 Tablet (≤768px)
-- 🖥️ Desktop (≤992px)
-- 🖥️💼 Large Desktop (>1200px)
 
 ### 📐 Typische Breakpoint-Größen (in Pixeln)
 
