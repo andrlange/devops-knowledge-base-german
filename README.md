@@ -1,4 +1,7 @@
-# 📚 Wissenssammlung DevOps & Entwicklung
+!In Bearbeitung, viele der Links im Inhaltsverzeichnis sind vorerst Platzhalter!
+
+
+#📚 Wissenssammlung DevOps & Entwicklung
 
 Willkommen zu dieser fortlaufenden **Wissenssammlung rund um DevOps und Softwareentwicklung**. Diese Sammlung dient als strukturierter, wachsender Leitfaden für Entwickler*innen, IT-nahe Rollen und alle, die sich für moderne Softwarebereitstellung, Automatisierung und Entwicklungstechnologien interessieren.
 
@@ -75,6 +78,9 @@ Eine thematisch strukturierte Übersicht aller bisher erfassten Inhalte. Die Pfa
 ---
 
 ## 📦 Sprachen & Frameworks
+
+### Markdown
+- [Mardown HowTo](markdown/MARKDOWN_HOWTO.md)
 
 ### Kotlin
 - [Virtuelle Threads mit Kotlin & Spring Boot](kotlin/VIRTUAL_THREADS.md)
