@@ -107,18 +107,28 @@ Ergebnis:
 
 
 ### 🔣 Häufig genutzte Symbole
-| Symbol | Beschreibung         | Beispiel                 |
-| ------ | -------------------- | ------------------------ |
-| ✅      | Erledigt             | `✅ Done`                 |
-| ⚠️     | Warnung              | `⚠️ Achtung`             |
-| 🚧     | In Arbeit            | `🚧 WIP`                 |
-| ❌      | Fehler / Problem     | `❌ Build failed`         |
-| 🔍     | Untersuchung läuft   | `🔍 Debugging`           |
-| 📦     | Paket / Deployment   | `📦 Released v1.2.0`     |
-| 📄     | Dokument             | `📄 Spezifikation.md`    |
-| 🔐     | Sicherheit / Secrets | `🔐 API-Key gespeichert` |
 
-✏️ Tipp: Viele Markdown-Editoren (z. B. VS Code, Obsidian) zeigen dir direkt eine Vorschau an. Bei GitHub oder GitLab wird Markdown automatisch gerendert.
+| Symbol | Beschreibung         | Beispiel               | Unicode-Eingabe |
+|--------|----------------------|------------------------|------------------|
+| ✅     | Erledigt             | `✅ Done`              | `U+2705`         |
+| ⚠️     | Warnung              | `⚠️ Achtung`           | `U+26A0 U+FE0F`  |
+| 🚧     | In Arbeit            | `🚧 WIP`               | `U+1F6A7`        |
+| ❌     | Fehler / Problem     | `❌ Build failed`      | `U+274C`         |
+| 🔍     | Untersuchung läuft   | `🔍 Debugging`         | `U+1F50D`        |
+| 📦     | Paket / Deployment   | `📦 Released v1.2.0`   | `U+1F4E6`        |
+| 📄     | Dokument             | `📄 Spezifikation.md`  | `U+1F4C4`        |
+| 🔐     | Sicherheit / Secrets | `🔐 API-Key gespeichert` | `U+1F510`     |
+
+#### Hinweis zur Verwendung:
+- Die Unicode-Eingaben sind in der Form U+XXXX notiert, was den offiziellen Unicode-Codepunkt beschreibt.
+- In HTML kannst du Emojis auch als &#xXXXX; (hexadezimal) oder &#DDDD; (dezimal) schreiben. 
+  - Beispiel: \&#x1F4E6; ergibt 📦
+- Einige Symbole enthalten ein sogenanntes Variation Selector (z. B. U+FE0F), um sicherzustellen, dass das Symbol als 
+- Emoji (und nicht als Schwarz-Weiß-Glyph) angezeigt wird.
+
+
+>✏️ Tipp: Viele Markdown-Editoren (z. B. IntelliJ, VS Code, Obsidian) zeigen dir direkt eine Vorschau an. Bei GitHub 
+> oder GitLab wird Markdown automatisch gerendert.
 
 
 ## 🛠️ Viewer & Editoren
