@@ -142,5 +142,6 @@ Markdown lässt sich mit vielen Tools schreiben und anzeigen:
 
 - HackMD – Kollaborativer Markdown-Editor (ideal für Teams)
 
-
+## Zurück zum Inhalt:
+[Zurück zum Startpunkt](../README.md)
 

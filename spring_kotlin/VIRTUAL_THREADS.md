@@ -191,3 +191,6 @@ java {
 
 ## 🧠 Fazit
 Virtual Threads erlauben extrem einfache und performante Nebenläufigkeit in Java 21 – besonders in Kombination mit Spring Boot. Wichtig bleibt jedoch: Thread-Sicherheit ist weiterhin entscheidend – besonders bei Singleton-Beans.
+
+## Zurück zum Inhalt:
+[Zurück zum Startpunkt](../README.md)
