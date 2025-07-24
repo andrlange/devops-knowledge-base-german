@@ -1,7 +1,7 @@
 !In Bearbeitung, viele der Links im Inhaltsverzeichnis sind vorerst Platzhalter!
 
 
-#📚 Wissenssammlung DevOps & Entwicklung
+# 📚 Wissenssammlung DevOps & Entwicklung
 
 Willkommen zu dieser fortlaufenden **Wissenssammlung rund um DevOps und Softwareentwicklung**. Diese Sammlung dient als strukturierter, wachsender Leitfaden für Entwickler*innen, IT-nahe Rollen und alle, die sich für moderne Softwarebereitstellung, Automatisierung und Entwicklungstechnologien interessieren.
 
