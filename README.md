@@ -91,10 +91,10 @@ Eine thematisch strukturierte Übersicht aller bisher erfassten Inhalte. Die Pfa
 - [Laufzeitmessung mit AOP und ANNOTATION](spring_kotlin/SPRING_AOP_CUSTOM_ANNOTATION.md)
 
 ### Dart & Flutter
-- [Flutter State Management im Überblick](flutter/STATE_MANAGEMENT.md)
-- [Responsive Design Pattern für UIs mit Flutter](flutter/RESPONSIVE_DESIGN.md)
-- [Clean Architecture, Services und Asynchronität mit Streams](flutter/CLEAN_ARCHITECTURE.md)
-- [Testing in Flutter-Projekten](flutter/TESTING.md)
+- [Flutter State Management im Überblick mit BLoC Patterns](flutter_dart/STATEMANAGEMENT_BLOC.md)
+- [Responsive Design Pattern für UIs mit Flutter](flutter_dart/RESPONSIVE_DESIGN.md)
+- [Clean Architecture, Services und Asynchronität mit Streams](flutter_dart/CLEAN_ARCHITECTURE.md)
+- [Testing in Flutter-Projekten](flutter_dart/TESTING.md)
 
 ---
 

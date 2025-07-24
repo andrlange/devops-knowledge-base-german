@@ -1,0 +1,28 @@
+<svg width="400" height="200" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        .box { fill: #a6d4fa; stroke: #333; stroke-width: 2; rx: 10; ry: 10; }
+        .text { font-family: sans-serif; font-size: 16px; fill: #000; text-anchor: middle; }
+        .arrow { marker-end: url(#arrowhead); stroke: #66A; stroke-width: 2; fill: #66A; }
+    </style>
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" fill="#66A"
+                refX="10" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" />
+        </marker>
+    </defs>
+    <rect x="10" y="80" width="80" height="40" class="box"/>
+    <text x="50" y="105" class="text">Event</text>
+
+    <rect x="120" y="60" width="80" height="80" class="box"/>
+    <text x="160" y="105" class="text">BLoC</text>
+
+    <rect x="240" y="50" width="80" height="40" class="box"/>
+    <text x="280" y="75" class="text">State</text>
+
+    <rect x="240" y="110" width="80" height="40" class="box"/>
+    <text x="280" y="135" class="text">UI</text>
+
+    <line x1="90" y1="100" x2="120" y2="100" class="arrow"/>
+    <line x1="200" y1="80" x2="240" y2="70" class="arrow"/>
+    <line x1="200" y1="120" x2="240" y2="130" class="arrow"/>
+</svg>

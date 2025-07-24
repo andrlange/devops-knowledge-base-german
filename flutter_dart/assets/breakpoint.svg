@@ -1,0 +1,53 @@
+<svg width="1000" height="200" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        .title { font-family: sans-serif; font-size: 24px; font-weight: bold; fill: #666666; }
+        .label { font-family: sans-serif; font-size: 16px; fill: #000; }
+        .box { fill: #f4f4f4; stroke: #000; stroke-width: 1; }
+    </style>
+
+    <!-- Titel -->
+    <text x="400" y="30" class="title" text-anchor="middle">Responsive Breakpoints Overview</text>
+
+    <!-- Kategorie-Labels -->
+    <g transform="translate(0, 60)">
+        <rect x="0" y="0" width="160" height="40" class="box"/>
+        <text x="80" y="25" class="label" text-anchor="middle">Small Phone</text>
+
+        <rect x="160" y="0" width="160" height="40" class="box"/>
+        <text x="240" y="25" class="label" text-anchor="middle">Large Phone</text>
+
+        <rect x="320" y="0" width="160" height="40" class="box"/>
+        <text x="400" y="25" class="label" text-anchor="middle">Tablet</text>
+
+        <rect x="480" y="0" width="160" height="40" class="box"/>
+        <text x="560" y="25" class="label" text-anchor="middle">Desktop</text>
+
+        <rect x="640" y="0" width="160" height="40" class="box"/>
+        <text x="720" y="25" class="label" text-anchor="middle">FullHD Desktop</text>
+
+        <rect x="800" y="0" width="160" height="40" class="box"/>
+        <text x="880" y="25" class="label" text-anchor="middle">UltraHD Desktop</text>
+    </g>
+
+    <!-- Werte-Labels -->
+    <g transform="translate(0, 110)">
+        <rect x="0" y="0" width="160" height="40" class="box"/>
+        <text x="80" y="25" class="label" text-anchor="middle">&lt; 360</text>
+
+        <rect x="160" y="0" width="160" height="40" class="box"/>
+        <text x="240" y="25" class="label" text-anchor="middle">360 - 430</text>
+
+        <rect x="320" y="0" width="160" height="40" class="box"/>
+        <text x="400" y="25" class="label" text-anchor="middle">431 – 768</text>
+
+        <rect x="480" y="0" width="160" height="40" class="box"/>
+        <text x="560" y="25" class="label" text-anchor="middle">769 – 1440</text>
+
+        <rect x="640" y="0" width="160" height="40" class="box"/>
+        <text x="720" y="25" class="label" text-anchor="middle">1441 – 1920</text>
+
+        <rect x="800" y="0" width="160" height="40" class="box"/>
+        <text x="880" y="25" class="label" text-anchor="middle">&gt; 1920</text>
+
+    </g>
+</svg>
