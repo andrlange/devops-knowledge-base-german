@@ -86,8 +86,9 @@ Eine thematisch strukturierte Übersicht aller bisher erfassten Inhalte. Die Pfa
 - [Virtuelle Threads mit Kotlin & Spring Boot](spring_kotlin/VIRTUAL_THREADS.md)
 
 ### Spring & Spring Boot
-- [Rest Controller und Fehlerbehandlung mit Advices](spring_kotlin/CONTROLLER_ADVICES.md)
-- 
+- [Rest Controller und Fehlerbehandlung mit Advices](spring_kotlin/CONTROLLER_ADVICE.md)
+- [Eigene Validatoren für komplexere DTOs](spring_kotlin/CUSTOM_VALIDATORS.md)
+
 ### Dart & Flutter
 - [Flutter State Management im Überblick](flutter/STATE_MANAGEMENT.md)
 - [Responsive Design Pattern für UIs mit Flutter](flutter/RESPONSIVE_DESIGN.md)
