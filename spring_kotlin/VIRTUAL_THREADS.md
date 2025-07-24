@@ -44,8 +44,12 @@ In Spring ist eine @Service-Bean per Default Singleton – das bedeutet:
 - Besser: Beans zustandslos halten → alle Daten als lokale Variablen innerhalb der Methoden
 
 ## ✅ Beispiel: Scheduler mit synchronisierten und parallelen Virtual Threads
+Ablauf:
+<div style="background-color: #888; padding: 10px; display: inline-block;">
+  <img src="assets/nebenlaeufigkeit.svg" alt="Thread Ablauf" />
+</div>
 
-
+Code-Beispiel:
 ```kotlin
 
 @Component
