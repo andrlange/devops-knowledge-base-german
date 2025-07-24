@@ -83,6 +83,44 @@ data class CreateUserRequest(
 }
 ```
 
+## ⚙️ Abhängigkeit: Spring Boot Validator (JSR-380 / Jakarta Validation)
+
+Damit benutzerdefinierte Validatoren wie `@StringListValidator` funktionieren, muss das **Bean Validation API** (JSR-380 / Jakarta Validation) im Projekt eingebunden sein.
+
+### 📦 Gradle (Kotlin DSL)
+
+```kotlin
+dependencies {
+    implementation("org.springframework.boot:spring-boot-starter-validation")
+}
+
+```
+
+### 📦 Maven
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-validation</artifactId>
+</dependency>
+```
+
+
+>⚠️ Diese Abhängigkeit bringt die notwendige Infrastruktur wie jakarta.validation und die 
+> automatische Validierung über @Valid mit.
+
+
+>💡 Hinweis: Ab Spring Boot 3.x wird standardmäßig jakarta.validation verwendet, nicht mehr javax.validation. Achte 
+> bei benutzerdefinierten Validatoren darauf, die richtigen Imports zu nutzen:
+
+```kotlin
+import jakarta.validation.Constraint
+import jakarta.validation.ConstraintValidator
+import jakarta.validation.ConstraintValidatorContext
+import jakarta.validation.Payload
+```
+
+
+
 ## 📌 Zusammenfassung & Best Practices
 
 | Best Practice                         | Empfehlung                                                             |
