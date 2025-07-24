@@ -1,33 +1,34 @@
 <svg width="900" height="340" xmlns="http://www.w3.org/2000/svg">
     <style>
         .box { fill: #e0f7fa; stroke: #00796b; stroke-width: 2; }
-        .arrow { stroke: #000; stroke-width: 2; marker-end: url(#arrowhead); }
-        .label { font-family: Arial, sans-serif; font-size: 14px; }
+        .arrow { stroke: #00aa00; stroke-width: 2; marker-end: url(#arrowhead); }
+        .label { font-family: Arial, sans-serif; font-size: 14px; fill: #00ff00; }
+        .boxlabel { font-family: Arial, sans-serif; font-size: 14px; fill: #555; }
         .thread { fill: #fff3e0; stroke: #f57c00; stroke-width: 2; }
         .thread3 { fill: #e8f5e9; stroke: #388e3c; stroke-width: 2; }
     </style>
 
     <defs>
         <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
-            <polygon points="0 0, 10 3.5, 0 7" fill="#000"/>
+            <polygon points="0 0, 10 3.5, 0 7" fill="#00aa00"/>
         </marker>
     </defs>
 
     <!-- Scheduler -->
     <rect x="50" y="30" width="140" height="40" class="box"/>
-    <text x="120" y="55" text-anchor="middle" class="label">Scheduler</text>
+    <text x="120" y="55" text-anchor="middle" class="boxlabel">Scheduler</text>
 
     <!-- Thread 1 -->
     <rect x="250" y="30" width="160" height="40" class="thread"/>
-    <text x="330" y="55" text-anchor="middle" class="label">Thread 1 (10s)</text>
+    <text x="330" y="55" text-anchor="middle" class="boxlabel">Thread 1 (10s)</text>
 
     <!-- Thread 3 -->
     <rect x="250" y="90" width="160" height="40" class="thread3"/>
-    <text x="330" y="115" text-anchor="middle" class="label">Thread 3 (10s)</text>
+    <text x="330" y="115" text-anchor="middle" class="boxlabel">Thread 3 (10s)</text>
 
     <!-- Thread 2 -->
     <rect x="460" y="30" width="160" height="40" class="thread"/>
-    <text x="540" y="55" text-anchor="middle" class="label">Thread 2 (10s)</text>
+    <text x="540" y="55" text-anchor="middle" class="boxlabel">Thread 2 (10s)</text>
 
     <!-- Arrows -->
     <line x1="190" y1="50" x2="250" y2="50" class="arrow"/>
@@ -35,10 +36,10 @@
     <line x1="410" y1="50" x2="460" y2="50" class="arrow"/>
 
     <!-- Timeline -->
-    <line x1="250" y1="180" x2="250" y2="270" stroke="#ccc" stroke-dasharray="4"/>
-    <line x1="410" y1="180" x2="410" y2="270" stroke="#ccc" stroke-dasharray="4"/>
-    <line x1="460" y1="180" x2="460" y2="270" stroke="#ccc" stroke-dasharray="4"/>
-    <line x1="620" y1="180" x2="620" y2="270" stroke="#ccc" stroke-dasharray="4"/>
+    <line x1="250" y1="180" x2="250" y2="270" stroke="#888" stroke-dasharray="4"/>
+    <line x1="410" y1="180" x2="410" y2="270" stroke="#888" stroke-dasharray="4"/>
+    <line x1="460" y1="180" x2="460" y2="270" stroke="#888" stroke-dasharray="4"/>
+    <line x1="620" y1="180" x2="620" y2="270" stroke="#888" stroke-dasharray="4"/>
 
     <!-- Time Labels -->
     <text x="250" y="295" text-anchor="middle" class="label">t=0s</text>
@@ -47,13 +48,13 @@
 
     <!-- Thread 1 Execution -->
     <rect x="250" y="200" width="160" height="20" class="thread"/>
-    <text x="330" y="215" text-anchor="middle" class="label">Thread 1 läuft</text>
+    <text x="330" y="215" text-anchor="middle" class="boxlabel">Thread 1 läuft</text>
 
     <!-- Thread 3 Execution -->
     <rect x="250" y="230" width="160" height="20" class="thread3"/>
-    <text x="330" y="245" text-anchor="middle" class="label">Thread 3 läuft</text>
+    <text x="330" y="245" text-anchor="middle" class="boxlabel">Thread 3 läuft</text>
 
     <!-- Thread 2 Execution -->
     <rect x="460" y="200" width="160" height="20" class="thread"/>
-    <text x="540" y="215" text-anchor="middle" class="label">Thread 2 läuft</text>
+    <text x="540" y="215" text-anchor="middle" class="boxlabel">Thread 2 läuft</text>
 </svg>
