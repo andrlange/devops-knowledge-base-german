@@ -1,0 +1,34 @@
+<svg width="700" height="400" xmlns="http://www.w3.org/2000/svg">
+    <!-- Outer Application Box -->
+    <rect x="150" y="20" width="400" height="240" rx="15" ry="15" fill="#e0f8e0" stroke="#000" stroke-width="2"/>
+    <text x="350" y="45" font-size="18" text-anchor="middle" fill="#000">Application</text>
+
+    <!-- Caffeine Cache (inside App) -->
+    <rect x="170" y="180" width="120" height="50" rx="8" ry="8" fill="#ffffff" stroke="#000" stroke-width="2"/>
+    <text x="230" y="210" font-size="14" text-anchor="middle" fill="#000">Caffeine</text>
+
+    <!-- Redis/Valkey Cache (outside App) -->
+    <rect x="500" y="300" width="140" height="50" rx="8" ry="8" fill="#eecccc" stroke="#000" stroke-width="2"/>
+    <text x="570" y="330" font-size="14" text-anchor="middle" fill="#000">Valkey</text>
+
+    <!-- Process A (uses Caffeine) -->
+    <rect x="170" y="80" width="160" height="60" rx="10" ry="10" fill="#ffffff" stroke="#000" stroke-width="1.5"/>
+    <text x="250" y="110" font-size="14" text-anchor="middle" fill="#000">Service A</text>
+    <text x="250" y="125" font-size="12" text-anchor="middle" fill="#666">(Caffeine Cache)</text>
+
+    <!-- Process B (uses Valkey) -->
+    <rect x="330" y="80" width="160" height="60" rx="10" ry="10" fill="#ffffff" stroke="#000" stroke-width="1.5"/>
+    <text x="410" y="110" font-size="14" text-anchor="middle" fill="#000">Service B</text>
+    <text x="410" y="125" font-size="12" text-anchor="middle" fill="#666">(Valkey Cache)</text>
+
+    <!-- Arrows -->
+    <line x1="250" y1="140" x2="230" y2="175" stroke="#6A6" stroke-width="2" marker-end="url(#arrow)"/>
+    <line x1="410" y1="140" x2="570" y2="295" stroke="#6A6" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <!-- Arrowhead -->
+    <defs>
+        <marker id="arrow" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L0,6 L9,3 z" fill="#6A6"/>
+        </marker>
+    </defs>
+</svg>

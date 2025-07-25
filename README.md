@@ -89,7 +89,7 @@ Eine thematisch strukturierte Übersicht aller bisher erfassten Inhalte. Die Pfa
 - [Rest Controller und Fehlerbehandlung mit Advices](spring_kotlin/CONTROLLER_ADVICE.md)
 - [Eigene Validatoren für komplexere DTOs](spring_kotlin/CUSTOM_VALIDATORS.md)
 - [Laufzeitmessung mit AOP und ANNOTATION](spring_kotlin/SPRING_AOP_CUSTOM_ANNOTATION.md)
-
+- [Einführung in Caching Strategien mit Caffeine, Redis/Valkey](spring_kotlin/CACHING_INTRO.md)
 ### Dart & Flutter
 - [Flutter State Management im Überblick mit BLoC Patterns](flutter_dart/STATEMANAGEMENT_BLOC.md)
 - [Responsive Design Pattern für UIs mit Flutter](flutter_dart/RESPONSIVE_DESIGN.md)
