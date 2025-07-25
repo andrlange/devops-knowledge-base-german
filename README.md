@@ -84,7 +84,7 @@ Eine thematisch strukturierte Übersicht aller bisher erfassten Inhalte. Die Pfa
 
 ### Kotlin
 - [Virtuelle Threads mit Kotlin & Spring Boot](spring_kotlin/VIRTUAL_THREADS.md)
-
+- [Null Handling in Kotlin, warum `!=null` vermeiden!](spring_kotlin/NULLHANDLING_KOTLIN.md)
 ### Spring & Spring Boot
 - [Rest Controller und Fehlerbehandlung mit Advices](spring_kotlin/CONTROLLER_ADVICE.md)
 - [Eigene Validatoren für komplexere DTOs](spring_kotlin/CUSTOM_VALIDATORS.md)
