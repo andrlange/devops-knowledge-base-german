@@ -16,17 +16,17 @@ Clean Architecture ist ein Architekturmuster, das von Robert C. Martin entwickel
 
 ```
 ┌─────────────────────────────────────┐
-│           Presentation              │
-│        (UI + State Management)      │
+│            Presentation             │
+│       (UI + State Management)       │
 ├─────────────────────────────────────┤
-│           Application               │
-│           (Use Cases)               │
+│            Application              │
+│            (Use Cases)              │
 ├─────────────────────────────────────┤
-│            Domain                   │
-│     (Entities + Repositories)       │
+│              Domain                 │
+│      (Entities + Repositories)      │
 ├─────────────────────────────────────┤
-│         Infrastructure              │
-│     (Data Sources + Services)       │
+│          Infrastructure             │
+│      (Data Sources + Services)      │
 └─────────────────────────────────────┘
 ```
 
