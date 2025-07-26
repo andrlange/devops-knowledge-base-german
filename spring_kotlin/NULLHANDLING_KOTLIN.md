@@ -134,6 +134,40 @@ fun User?.isValid(): Boolean {
 }
 ```
 
+## 🧠 Dinge die Berücksicht werden müssen
+Folgende Dinge solltest du dir merken:
+
+>Virtuelle Threads sind mächtig – aber du musst lernen, nebenläufiges Programmieren komplett neu zu denken.
+
+Folgende Checkliste solltest du beachten:
+
+### ✅ Concurrency-Checkliste
+- Blockiere niemals innerhalb eines Locks oder synchronized-Blocks.
+Verschiebe alle I/O-Operationen konsequent nach außen. Wenn das nicht möglich ist, verwende nicht-blockierende Muster oder überdenke das Design.
+
+
+- Bevorzuge lockfreie Datenstrukturen oder zumindest fein granulare Locks.
+Schau dir alte Collections-Verwendungen oder synchronisierte Methoden in Legacy-Code nochmals kritisch an.
+
+
+- Mach dich mit den neuen Debugging-Tools vertraut.
+Ein einfaches jstack reicht nicht mehr aus, virtuelle Threads werden dort nicht zuverlässig dargestellt. Nutze jcmd, 
+  moderne Thread-Dumps und Heap-Analyzer mit Virtual-Thread-Unterstützung.
+
+
+- Last, teste mit realitätsnaher Nebenläufigkeit.
+Was lokal bei 10 Anfragen funktioniert, bricht bei echter Last vielleicht komplett zusammen. Teste unter realen Bedingungen.
+
+
+- Überwache Ressourcen auf Betriebssystem- und JVM-Ebene.
+Achte auf ausgelastete Threadpools, offene Sockets und blockierte Ressourcen – das sind oft die ersten Warnzeichen.
+
+
+- Vertrau keinen „grünen“ Dashboards blind.
+Nur weil die JVM läuft, heißt das nicht, dass deine App auch wirklich arbeitet. Messe echte Durchsatzraten und Antwortzeiten.
+
+
+
 ## 🧾 Zusammenfassung
 
 | ✅ Tu es so                                 | ❌ Vermeide                                 |
