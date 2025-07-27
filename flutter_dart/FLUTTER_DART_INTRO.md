@@ -52,7 +52,7 @@ ElevatedButton(
 
 ## ✅ Best Practices
 - Nutze State Management: z. B. BLoC, Provider etc.
-- Trenne UI, Business-Logik und Datenzugriff (Clean Architecture mit DDD).
+- Trenne UI, Business-Logik und Datenzugriff ([Clean Architecture mit DDD](CLEAN_ARCHITECTURE.md)).
 - Nutze Responsive Layouts (LayoutBuilder, MediaQuery).
 - Reduziere Rebuilds durch effizientes Widget-Design.
 - Modularisiere Komponenten in eigene Widgets.
