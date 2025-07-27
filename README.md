@@ -34,6 +34,13 @@ Markdown ist damit ein ideales Format für eine offene, durchsuchbare und gemein
 
 
 ## 🧭 Themenüberblick
+Die gewählten Sprachen, Frameworks Tool-Chain wurden gewählt, um möglichst schnell und effizient die Themen zu 
+erlernen, als auch mit wenig Resourcen eine Komplette Dev-Ops Umgebung mit Laufzeitumgebung aufzusetzen.
+
+Die wichtigsten Themen beschäftigen sich mit den Grundkonzepten wie. Clean-Architecture mit Domain Driven Design 
+Patterns (DDD), sauberen Code, Lesbarkeit, Modularisierung und Fehlerbehandlung, Rubustheit und Betriebliche Aspekte. 
+
+Alle Sprachen, Frameworks oder Komponenten können auch ersetzt werden.
 
 Die Inhalte sind thematisch gegliedert in Unterordner, die jeweils eigenständige Bereiche behandeln, z. B.:
 
