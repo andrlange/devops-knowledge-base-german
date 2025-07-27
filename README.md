@@ -91,7 +91,7 @@ Eine thematisch strukturierte Übersicht aller bisher erfassten Inhalte. Die Pfa
 ## 📦 Sprachen & Frameworks
 
 ### Markdown
-- [Mardown HowTo](markdown/MARKDOWN_HOWTO.md)
+- [Markdown HowTo](markdown/MARKDOWN_HOWTO.md)
 
 ### Kurz-Intro 
 - [Spring Boot mit Kotlin](spring_kotlin/SPRINGBOOT_KOTLIN_INTRO.md)
