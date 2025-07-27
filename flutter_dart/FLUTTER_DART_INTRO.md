@@ -2,7 +2,7 @@
 
 Dieses Intro basiert auf **Flutter aktuell -> 3.32** und beschreibt moderne Entwicklung für Cross-Plattform und Web. 
 Flutter 
-bietet ein deklaratives UI und eignet sich hervorragend für Cross-Plattform-Entwicklung.
+bietet eine deklarative UI Entwicklung und eignet sich hervorragend für Cross-Plattform-Entwicklung.
 
 ---
 
