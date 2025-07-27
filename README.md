@@ -3,7 +3,8 @@
 
 # 📚 Wissenssammlung DevOps & Entwicklung 
 - Full Stack -> Full Chain : Spring Boot - Kotlin -> Flutter - Dart, Backing Services
-- GitOps "like" -> Git -> Cloud-Native-Buildpacks -> Tekton -> Harbor Regestry -> ArgoCD -> Kubernetes
+- GitOps "like" -> Git -> Cloud-Native-Buildpacks -> Tekton -> Harbor Regestry -> ArgoCD -> Kubernetes oder andere 
+  Run-Platformen (Heroku, Cloudfoundry und mehr)
 - Best Practices, Security, Observability
 
 Willkommen zu dieser fortlaufenden **Wissenssammlung rund um DevOps und Softwareentwicklung**. Diese Sammlung dient als strukturierter, wachsender Leitfaden für Entwickler*innen, IT-nahe Rollen und alle, die sich für moderne Softwarebereitstellung, Automatisierung und Entwicklungstechnologien interessieren.
