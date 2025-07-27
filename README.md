@@ -82,14 +82,20 @@ Eine thematisch strukturierte Übersicht aller bisher erfassten Inhalte. Die Pfa
 ### Markdown
 - [Mardown HowTo](markdown/MARKDOWN_HOWTO.md)
 
+### Kurz-Intro 
+- [Spring Boot mit Kotlin](spring_kotlin/SPRINGBOOT_KOTLIN_INTRO.md)
+- [Flutter Framework](flutter_dart/FLUTTER_DART_INTRO.md)
+- 
 ### Kotlin
 - [Virtuelle Threads mit Kotlin & Spring Boot](spring_kotlin/VIRTUAL_THREADS.md)
 - [Null Handling in Kotlin, warum `!=null` vermeiden!](spring_kotlin/NULLHANDLING_KOTLIN.md)
+
 ### Spring & Spring Boot
 - [Rest Controller und Fehlerbehandlung mit Advices](spring_kotlin/CONTROLLER_ADVICE.md)
 - [Eigene Validatoren für komplexere DTOs](spring_kotlin/CUSTOM_VALIDATORS.md)
 - [Laufzeitmessung mit AOP und ANNOTATION](spring_kotlin/SPRING_AOP_CUSTOM_ANNOTATION.md)
 - [Einführung in Caching Strategien mit Caffeine, Redis/Valkey](spring_kotlin/CACHING_INTRO.md)
+
 ### Dart & Flutter
 - [Flutter State Management im Überblick mit BLoC Patterns](flutter_dart/STATEMANAGEMENT_BLOC.md)
 - [Responsive Design Pattern für UIs mit Flutter](flutter_dart/RESPONSIVE_DESIGN.md)
