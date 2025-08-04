@@ -150,7 +150,7 @@ bewusstes Design der Applikationsstruktur – besonders bei Kotlin, wo Default-M
 
 > 🔒 Ein falsch platziertes @Transactional ist wie ein nicht eingerasteter Sicherheitsgurt: Du merkst es erst, wenn es zu spät ist.
 
-## TL;DR Checkliste
+## TLDR Checkliste
 
 | Regel                                                                     | Beschreibung                                         |
 |---------------------------------------------------------------------------| ---------------------------------------------------- |
