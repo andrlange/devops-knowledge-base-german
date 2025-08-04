@@ -161,3 +161,5 @@ bewusstes Design der Applikationsstruktur – besonders bei Kotlin, wo Default-M
 | ❌ Keine privaten oder internen Aufrufe von `@Transactional`-Methoden      | Sonst wird die Transaktion stillschweigend ignoriert |
 
 
+## Zurück zum Inhalt:
+[Zurück zum Startpunkt](../README.md)
