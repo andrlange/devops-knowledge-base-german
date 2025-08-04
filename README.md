@@ -96,7 +96,7 @@ Eine thematisch strukturierte Übersicht aller bisher erfassten Inhalte. Die Pfa
 ### Kurz-Intro 
 - [Spring Boot mit Kotlin](spring_kotlin/SPRINGBOOT_KOTLIN_INTRO.md)
 - [Flutter Framework](flutter_dart/FLUTTER_DART_INTRO.md)
-- 
+
 ### Kotlin
 - [Virtuelle Threads mit Kotlin & Spring Boot](spring_kotlin/VIRTUAL_THREADS.md)
 - [Null Handling in Kotlin, warum `!=null` vermeiden!](spring_kotlin/NULLHANDLING_KOTLIN.md)
