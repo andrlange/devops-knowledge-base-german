@@ -1,20 +1,20 @@
-# Language/Sprache : [EN](CLEAN_ARCHITECTURE_EN.md) | [DE](CLEAN_ARCHITECTURE.md)
+# Sprache/Language : [DE](CLEAN_ARCHITECTURE.md) | [EN](CLEAN_ARCHITECTURE_EN.md)
 
 # Flutter Clean Architecture & Domain Driven Design Guide
 
-Ein praktischer Leitfaden für saubere und skalierbare Flutter-Anwendungen mit modernen Architektur-Patterns.
+A practical guide for clean and scalable Flutter applications with modern architecture patterns.
 
-## 🏗️ Was ist Clean Architecture und warum sollten wir sie verwenden?
+## 🏗️ What is Clean Architecture and why should we use it?
 
-Clean Architecture ist ein Architekturmuster, das von Robert C. Martin entwickelt wurde. Es organisiert Code in konzentrische Kreise, wobei jeder Kreis eine andere Ebene der Software repräsentiert.
+Clean Architecture is an architectural pattern developed by Robert C. Martin. It organizes code in concentric circles, where each circle represents a different layer of the software.
 
-### Vorteile:
-- **Testbarkeit**: Business Logic ist unabhängig von UI und externen Dependencies
-- **Wartbarkeit**: Klare Trennung der Verantwortlichkeiten
-- **Skalierbarkeit**: Neue Features lassen sich einfach hinzufügen
-- **Flexibilität**: UI oder Datenquellen können ausgetauscht werden, ohne die Kernlogik zu ändern
+### Advantages:
+- **Testability**: Business logic is independent of UI and external dependencies
+- **Maintainability**: Clear separation of concerns
+- **Scalability**: New features can be easily added
+- **Flexibility**: UI or data sources can be replaced without changing the core logic
 
-### Die vier Hauptschichten:
+### The four main layers:
 
 ```
 ┌─────────────────────────────────────┐
@@ -34,9 +34,9 @@ Clean Architecture ist ein Architekturmuster, das von Robert C. Martin entwickel
 
 ## 🎯 Domain Driven Design (DDD) + Clean Architecture
 
-Domain Driven Design fokussiert sich auf die Geschäftslogik und hilft dabei, komplexe Domänen zu modellieren. In Kombination mit Clean Architecture entsteht eine mächtige Struktur:
+Domain Driven Design focuses on business logic and helps model complex domains. Combined with Clean Architecture, a powerful structure emerges:
 
-### Domain Layer (Kern der Anwendung):
+### Domain Layer (Core of the application):
 
 ```dart
 // Domain Entity
@@ -50,7 +50,7 @@ class User with _$User {
   }) = _User;
 }
 
-// Value Object für Typ-Sicherheit
+// Value Object for type safety
 @freezed
 class Email with _$Email {
   const factory Email(String value) = _Email;
@@ -60,7 +60,7 @@ class Email with _$Email {
   bool get isValid => RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(value);
 }
 
-// Repository Interface (Domain definiert den Vertrag)
+// Repository Interface (Domain defines the contract)
 abstract class UserRepository {
   Stream<Result<List<User>>> getUsers();
   Future<Result<User>> getUserById(String id);
@@ -68,12 +68,12 @@ abstract class UserRepository {
 }
 ```
 
-## 🔄 Schichtentrennung mit BLoC Pattern
+## 🔄 Layer separation with BLoC Pattern
 
 ### 1. Presentation Layer (UI + BLoC)
 
 ```dart
-// BLoC für State Management
+// BLoC for State Management
 class UserBloc extends Bloc<UserEvent, UserState> {
   final GetUsersUseCase _getUsersUseCase;
   final StreamSubscription? _usersSubscription;
@@ -125,7 +125,7 @@ class UserListPage extends StatelessWidget {
 ### 2. Application Layer (Use Cases)
 
 ```dart
-// Use Case kapselt Geschäftslogik
+// Use Case encapsulates business logic
 class GetUsersUseCase {
   final UserRepository _repository;
 
@@ -136,7 +136,7 @@ class GetUsersUseCase {
   }
 }
 
-// Dependency Injection mit get_it
+// Dependency Injection with get_it
 final getIt = GetIt.instance;
 
 void setupDependencies() {
@@ -151,9 +151,9 @@ void setupDependencies() {
 }
 ```
 
-## ⚡ Saubere Fehlerbehandlung mit Result Pattern
+## ⚡ Clean error handling with Result Pattern
 
-Inspiriert von Kotlins Result<T> für typsichere Fehlerbehandlung:
+Inspired by Kotlin's Result<T> for type-safe error handling:
 
 ```dart
 @freezed
@@ -169,7 +169,7 @@ class AppError with _$AppError {
   const factory AppError.unknown(String message) = UnknownError;
 }
 
-// Extension für bessere Usability
+// Extension for better usability
 extension ResultX<T> on Result<T> {
   bool get isSuccess => this is Success<T>;
   bool get isError => this is Error<T>;
@@ -180,7 +180,7 @@ extension ResultX<T> on Result<T> {
   );
 }
 
-// Verwendung in Repository
+// Usage in Repository
 class UserRepositoryImpl implements UserRepository {
   final UserDataSource _dataSource;
 
@@ -200,21 +200,21 @@ class UserRepositoryImpl implements UserRepository {
 
 ## 🧊 Freezed - Immutable Data Classes
 
-Freezed ist ein Code-Generation Package, das dabei hilft, unveränderliche Datenklassen mit weniger Boilerplate-Code zu erstellen.
+Freezed is a code generation package that helps create immutable data classes with less boilerplate code.
 
-### Was ist Freezed?
-Freezed generiert automatisch:
-- **Immutable Classes** mit `const` Konstruktoren
-- **copyWith** Methoden für Updates
-- **Equality** und `hashCode` Implementierungen
-- **toString** Methoden für Debugging
-- **Union Types** für verschiedene Zustände
-- **JSON Serialization** (mit json_annotation)
+### What is Freezed?
+Freezed automatically generates:
+- **Immutable Classes** with `const` constructors
+- **copyWith** methods for updates
+- **Equality** and `hashCode` implementations
+- **toString** methods for debugging
+- **Union Types** for different states
+- **JSON Serialization** (with json_annotation)
 
-### Warum Freezed verwenden?
+### Why use Freezed?
 
 ```dart
-// Ohne Freezed - viel Boilerplate Code
+// Without Freezed - lots of boilerplate code
 class User {
   final String id;
   final String name;
@@ -246,7 +246,7 @@ class User {
   String toString() => 'User(id: $id, name: $name, email: $email)';
 }
 
-// Mit Freezed - clean und präzise
+// With Freezed - clean and concise
 @freezed
 class User with _$User {
   const factory User({
@@ -259,7 +259,7 @@ class User with _$User {
 }
 ```
 
-### Union Types für State Management:
+### Union Types for State Management:
 
 ```dart
 @freezed
@@ -270,7 +270,7 @@ class UserState with _$UserState {
   const factory UserState.error(String message) = _Error;
 }
 
-// Pattern Matching mit when/map
+// Pattern Matching with when/map
 Widget buildUI(UserState state) {
   return state.when(
     initial: () => const SizedBox(),
@@ -281,21 +281,21 @@ Widget buildUI(UserState state) {
 }
 ```
 
-## 💉 Injectable - Automatische Dependency Injection
+## 💉 Injectable - Automatic Dependency Injection
 
-Injectable automatisiert die Registrierung von Dependencies für get_it und reduziert manuellen Setup-Code erheblich.
+Injectable automates dependency registration for get_it and significantly reduces manual setup code.
 
-### Was ist Injectable?
-Injectable verwendet Annotations um:
-- **Automatische Registrierung** von Services und Repositories
-- **Scoped Dependencies** (Singleton, Factory, LazySingleton)
-- **Environment-spezifische** Registrierungen
-- **Abhängigkeitsauflösung** zur Compile-Zeit
+### What is Injectable?
+Injectable uses annotations to provide:
+- **Automatic registration** of services and repositories
+- **Scoped dependencies** (Singleton, Factory, LazySingleton)
+- **Environment-specific** registrations
+- **Dependency resolution** at compile time
 
-### Warum Injectable verwenden?
+### Why use Injectable?
 
 ```dart
-// Ohne Injectable - manueller Setup
+// Without Injectable - manual setup
 void setupDependencies() {
   // Infrastructure
   getIt.registerLazySingleton<HttpClient>(() => HttpClient());
@@ -312,7 +312,7 @@ void setupDependencies() {
   getIt.registerFactory(() => UserDetailBloc(getIt()));
 }
 
-// Mit Injectable - automatisch generiert
+// With Injectable - automatically generated
 @InjectableInit()
 void configureDependencies() => getIt.init();
 ```
@@ -320,20 +320,20 @@ void configureDependencies() => getIt.init();
 ### Injectable Annotations:
 
 ```dart
-// Singleton - eine Instanz für die gesamte App
+// Singleton - one instance for the entire app
 @singleton
 class UserRepository {
   final UserDataSource _dataSource;
   UserRepository(this._dataSource);
 }
 
-// LazySingleton - wird erst bei erstem Zugriff erstellt
+// LazySingleton - created only on first access
 @lazySingleton
 class DatabaseService {
-  // Wird nur erstellt wenn benötigt
+  // Created only when needed
 }
 
-// Factory - neue Instanz bei jedem getIt() Aufruf
+// Factory - new instance on every getIt() call
 @injectable
 class GetUsersUseCase {
   final UserRepository _repository;
@@ -350,7 +350,7 @@ class ApiService {
   ApiService(@Named('apiUrl') String baseUrl);
 }
 
-// Environment-spezifische Registrierung
+// Environment-specific registration
 @Environment('dev')
 @injectable
 class DevUserRepository implements UserRepository {
@@ -363,13 +363,13 @@ class ProdUserRepository implements UserRepository {
   // Production Implementation
 }
 
-// Abstract Classes registrieren
+// Register abstract classes
 @injectable
 class UserRepositoryImpl implements UserRepository {
   // Implementation
 }
 
-// Registrierung erfolgt automatisch als UserRepository
+// Registration happens automatically as UserRepository
 ```
 
 ### Setup in main.dart:
@@ -385,29 +385,29 @@ void configureDependencies() => getIt.init();
 
 // main.dart
 void main() {
-  configureDependencies(); // Alle Dependencies automatisch registriert
+  configureDependencies(); // All dependencies automatically registered
   runApp(MyApp());
 }
 ```
 
-### Vorteile von Injectable:
-- **Weniger Fehler**: Compile-Zeit Überprüfung der Dependencies
-- **Automatisches Update**: Neue Services werden automatisch registriert
-- **Environment Support**: Verschiedene Implementierungen für dev/prod
-- **Type Safety**: Falsche Dependencies werden zur Build-Zeit erkannt
+### Benefits of Injectable:
+- **Fewer errors**: Compile-time verification of dependencies
+- **Automatic updates**: New services are automatically registered
+- **Environment support**: Different implementations for dev/prod
+- **Type safety**: Wrong dependencies are caught at build time
 
 
 ## 🌊 ReactiveX & rxdart
 
-ReactiveX ist ein API für asynchrone Programmierung mit Observable Streams. `rxdart` erweitert Dart's Streams um mächtige Operatoren.
+ReactiveX is an API for asynchronous programming with Observable Streams. `rxdart` extends Dart's Streams with powerful operators.
 
-### Warum ReactiveX?
-- **Komposition**: Streams können kombiniert und transformiert werden
-- **Backpressure Handling**: Automatische Behandlung von schnellen Datenströmen
-- **Fehlerbehandlung**: Eingebaute Error-Recovery Mechanismen
+### Why ReactiveX?
+- **Composition**: Streams can be combined and transformed
+- **Backpressure handling**: Automatic handling of fast data streams
+- **Error handling**: Built-in error recovery mechanisms
 
 ```dart
-// RxDart Beispiel mit BehaviorSubject
+// RxDart example with BehaviorSubject
 class UserStore {
   final _usersSubject = BehaviorSubject<List<User>>.seeded([]);
   final _loadingSubject = BehaviorSubject<bool>.seeded(false);
@@ -416,7 +416,7 @@ class UserStore {
   Stream<List<User>> get users => _usersSubject.stream;
   Stream<bool> get isLoading => _loadingSubject.stream;
   
-  // Kombinierte Streams
+  // Combined Streams
   Stream<UserViewState> get viewState => Rx.combineLatest2(
     users,
     isLoading,
@@ -433,12 +433,12 @@ class UserStore {
 }
 ```
 
-## 🔗 Event-getriebene Architektur mit rxdart
+## 🔗 Event-driven architecture with rxdart
 
-RxDart ermöglicht elegante Kommunikation zwischen den Schichten:
+RxDart enables elegant communication between layers:
 
 ```dart
-// Event Bus für Cross-Layer Communication
+// Event Bus for Cross-Layer Communication
 class EventBus {
   static final _instance = EventBus._internal();
   factory EventBus() => _instance;
@@ -455,14 +455,14 @@ class EventBus {
   }
 }
 
-// Events definieren
+// Define Events
 @freezed
 class AppEvent with _$AppEvent {
   const factory AppEvent.userUpdated(User user) = UserUpdated;
   const factory AppEvent.networkStatusChanged(bool isOnline) = NetworkStatusChanged;
 }
 
-// In der Infrastructure Layer
+// In the Infrastructure Layer
 class NetworkService {
   NetworkService() {
     _connectivityStream.listen((isConnected) {
@@ -471,7 +471,7 @@ class NetworkService {
   }
 }
 
-// In der Application Layer
+// In the Application Layer
 class UserSyncUseCase {
   UserSyncUseCase() {
     EventBus().on<NetworkStatusChanged>()
@@ -480,7 +480,7 @@ class UserSyncUseCase {
   }
 }
 
-// RxDart Operatoren für komplexe Logik
+// RxDart operators for complex logic
 class SearchUseCase {
   final UserRepository _repository;
   
@@ -497,7 +497,7 @@ class SearchUseCase {
 }
 ```
 
-## 📁 Projektstruktur
+## 📁 Project Structure
 
 ```
 lib/
@@ -522,25 +522,25 @@ lib/
 └── injection_container.dart
 ```
 
-## ✨ Best Practices & Zusammenfassung
+## ✨ Best Practices & Summary
 
 ### Do's:
-- **Dependency Inversion**: Abstrakte Interfaces in der Domain Layer definieren
-- **Single Responsibility**: Jede Klasse hat eine klar definierte Aufgabe
-- **Immutable Entities**: Verwendung von `freezed` für unveränderliche Datenstrukturen
-- **Stream Disposal**: Immer Streams und Subscriptions schließen
-- **Error Boundaries**: Fehler auf der richtigen Ebene behandeln
+- **Dependency Inversion**: Define abstract interfaces in the Domain Layer
+- **Single Responsibility**: Each class has a clearly defined purpose
+- **Immutable Entities**: Use `freezed` for immutable data structures
+- **Stream Disposal**: Always close streams and subscriptions
+- **Error Boundaries**: Handle errors at the appropriate level
 
 ### Don'ts:
-- Domain Layer sollte niemals Flutter/UI Dependencies haben
-- Direkte Datenbankzugriffe in Use Cases vermeiden
-- Zu viele BehaviorSubjects (Memory Leaks)
-- Business Logic in Widgets
+- Domain Layer should never have Flutter/UI dependencies
+- Avoid direct database access in Use Cases
+- Too many BehaviorSubjects (Memory Leaks)
+- Business logic in Widgets
 
-### Code-Qualität sicherstellen:
+### Ensuring code quality:
 
 ```dart
-// Testing mit MockTail
+// Testing with MockTail
 class MockUserRepository extends Mock implements UserRepository {}
 
 void main() {
@@ -570,25 +570,25 @@ void main() {
 }
 ```
 
-## 📚 Weiterführende Themen
+## 📚 Advanced Topics
 
-### Fortgeschrittene Patterns:
+### Advanced Patterns:
 - **CQRS** (Command Query Responsibility Segregation)
-- **Event Sourcing** für komplexe Geschäftslogik
-- **Saga Pattern** für verteilte Transaktionen
-- **Repository Pattern** mit lokaler und Remote-Datenquelle
+- **Event Sourcing** for complex business logic
+- **Saga Pattern** for distributed transactions
+- **Repository Pattern** with local and remote data sources
 
-### Performance Optimierung:
-- **Code Generation** mit `build_runner`
-- **Lazy Loading** mit Streams
-- **Memory Management** bei RxDart Streams
-- **Widget Rebuilds** minimieren mit BlocBuilder
+### Performance Optimization:
+- **Code Generation** with `build_runner`
+- **Lazy Loading** with Streams
+- **Memory Management** with RxDart Streams
+- **Minimize Widget Rebuilds** with BlocBuilder
 
-### Testing Strategien:
-- **Unit Tests** für Use Cases und Entities
-- **Widget Tests** für UI Komponenten
-- **Integration Tests** für End-to-End Flows
-- **Golden Tests** für UI Consistency
+### Testing Strategies:
+- **Unit Tests** for Use Cases and Entities
+- **Widget Tests** for UI Components
+- **Integration Tests** for End-to-End Flows
+- **Golden Tests** for UI Consistency
 
 ### Tools & Libraries:
 ```yaml
@@ -621,8 +621,8 @@ dev_dependencies:
 
 ---
 
-### **Fazit**: 
-Clean Architecture kombiniert mit DDD und modernen Flutter-Tools ermöglicht es, skalierbare und wartbare Anwendungen zu entwickeln. RxDart und BLoC bieten mächtige Werkzeuge für State Management und reaktive Programmierung.
+### **Conclusion**:
+Clean Architecture combined with DDD and modern Flutter tools enables the development of scalable and maintainable applications. RxDart and BLoC provide powerful tools for state management and reactive programming.
 
-## Zurück zum Inhalt:
-[Zurück zum Startpunkt](../README.md)
+## Back to Content:
+[Back to Starting Point](../README_EN.md)

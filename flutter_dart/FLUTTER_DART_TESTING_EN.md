@@ -1,12 +1,12 @@
-# Language/Sprache : [EN](FLUTTER_DART_TESTING_EN.md) | [DE](FLUTTER_DART_TESTING.md)
+# Sprache/Language : [DE](FLUTTER_DART_TESTING.md) | [EN](FLUTTER_DART_TESTING_EN.md)
 
 # Flutter & Dart Testing Guide
 
-Ein Leitfaden für das Testen von Flutter-Anwendungen mit Dart
+A guide for testing Flutter applications with Dart
 
-## Inhaltsverzeichnis
+## Table of Contents
 
-1. [Allgemeine Grundlagen](#allgemeine-grundlagen)
+1. [General Fundamentals](#general-fundamentals)
 2. [Unit Tests](#unit-tests)
 3. [Widget Tests](#widget-tests)
 4. [State Management Tests (BLoC)](#state-management-tests-bloc)
@@ -14,62 +14,62 @@ Ein Leitfaden für das Testen von Flutter-Anwendungen mit Dart
 6. [BloC Tests](#state-management-tests-bloc)
 7. [Golden Tests](#golden-tests)
 8. [Asset Fonts in Flutter Tests](#asset-fonts-in-flutter-tests)
-9. [Fazit](#fazit)
+9. [Conclusion](#conclusion)
 
 ---
 
 
-## Allgemeine Grundlagen
+## General Fundamentals
 
-### Warum Tests überhaupt?
+### Why Tests at All?
 
-Tests sind essentiell für die Softwareentwicklung aus mehreren Gründen:
+Tests are essential for software development for several reasons:
 
-- **Qualitätssicherung**: Tests fangen Bugs frühzeitig ab, bevor sie in Produktion gehen
-- **Refactoring-Sicherheit**: Code kann sicher umstrukturiert werden, ohne Angst vor Breaking Changes
-- **Dokumentation**: Tests dokumentieren das erwartete Verhalten der Software
-- **Wartbarkeit**: Gut getesteter Code ist einfacher zu warten und zu erweitern
-- **Vertrauen**: Teams können mit mehr Selbstvertrauen neue Features entwickeln
-- **Kostenersparnis**: Bugs in frühen Phasen zu finden ist deutlich günstiger als in Produktion
+- **Quality Assurance**: Tests catch bugs early before they go into production
+- **Refactoring Safety**: Code can be safely restructured without fear of breaking changes
+- **Documentation**: Tests document the expected behavior of the software
+- **Maintainability**: Well-tested code is easier to maintain and extend
+- **Confidence**: Teams can develop new features with more confidence
+- **Cost Savings**: Finding bugs in early phases is significantly cheaper than in production
 
-### Test-Driven Development (TDD) und Behavior-Driven Development (BDD)
+### Test-Driven Development (TDD) and Behavior-Driven Development (BDD)
 
 #### Test-Driven Development (TDD)
 
-TDD folgt dem **Red-Green-Refactor-Zyklus**:
+TDD follows the **Red-Green-Refactor cycle**:
 
-1. **Red**: Schreibe einen fehlschlagenden Test
-2. **Green**: Schreibe den minimal notwendigen Code, um den Test zu bestehen
-3. **Refactor**: Verbessere den Code, ohne die Funktionalität zu ändern
+1. **Red**: Write a failing test
+2. **Green**: Write the minimal necessary code to make the test pass
+3. **Refactor**: Improve the code without changing functionality
 
 ```dart
-// Beispiel TDD-Zyklus
-// 1. RED: Test schreiben
+// Example TDD cycle
+// 1. RED: Write test
 test('should calculate area of rectangle', () {
   final calculator = AreaCalculator();
   expect(calculator.rectangleArea(5, 3), equals(15));
 });
 
-// 2. GREEN: Minimale Implementierung
+// 2. GREEN: Minimal implementation
 class AreaCalculator {
   double rectangleArea(double width, double height) {
     return width * height;
   }
 }
 
-// 3. REFACTOR: Code verbessern (falls notwendig)
+// 3. REFACTOR: Improve code (if necessary)
 ```
 
 #### Behavior-Driven Development (BDD)
 
-BDD erweitert TDD um geschäftliche Perspektiven und nutzt natürliche Sprache:
+BDD extends TDD with business perspectives and uses natural language:
 
-- **Given**: Ausgangssituation
-- **When**: Aktion
-- **Then**: Erwartetes Ergebnis
+- **Given**: Initial situation
+- **When**: Action
+- **Then**: Expected result
 
 ```dart
-// BDD-Stil in Dart
+// BDD style in Dart
 group('User Authentication', () {
   testWidgets('Given user is not logged in, When user enters valid credentials, Then user should be logged in', (tester) async {
     // Given
@@ -87,49 +87,49 @@ group('User Authentication', () {
 });
 ```
 
-### Unterschiede zwischen den Testtypen
+### Differences Between Test Types
 
-**Test-Pyramide**: Die ideale Verteilung der Tests folgt einer Pyramidenstruktur:
+**Test Pyramid**: The ideal distribution of tests follows a pyramid structure:
 
 ```
        /\
-      /  \     Integration Tests (wenige, langsam, teuer)
+      /  \     Integration Tests (few, slow, expensive)
      /    \
-    /______\   Widget Tests (moderate Anzahl, mittlere Geschwindigkeit)
+    /______\   Widget Tests (moderate number, medium speed)
    /        \
-  /__________\  Unit Tests (viele, schnell, günstig)
+  /__________\  Unit Tests (many, fast, cheap)
 ```
 
-- **Unit Tests**: Testen isolierte Funktionen, Methoden oder Klassen
-- **Widget Tests**: Testen einzelne Widgets und deren Interaktionen
-- **Integration Tests**: Testen das Zusammenspiel kompletter App-Bereiche
-- **Golden Tests**: Testen das visuelle Erscheinungsbild von Widgets
+- **Unit Tests**: Test isolated functions, methods, or classes
+- **Widget Tests**: Test individual widgets and their interactions
+- **Integration Tests**: Test the interplay of complete app areas
+- **Golden Tests**: Test the visual appearance of widgets
 
 ---
 
 ## Unit Tests
 
-### Kurze Einführung
+### Brief Introduction
 
-Unit Tests sind die Grundlage jeder Test-Suite. Sie testen kleinste isolierte Einheiten des Codes wie einzelne Funktionen, Methoden oder Klassen. In Flutter nutzen wir das `test` Package für Unit Tests.
+Unit tests are the foundation of any test suite. They test the smallest isolated units of code such as individual functions, methods, or classes. In Flutter, we use the `test` package for unit tests.
 
-### Wann nutzt man Unit Tests?
+### When to Use Unit Tests?
 
-**Verwende Unit Tests für:**
-- Geschäftslogik und Algorithmen
-- Datenmodelle und deren Methoden
-- Utilities und Hilfsfunktionen
-- Service-Klassen (z.B. API-Clients)
-- State Management (Blocs, Providers, etc.)
+**Use Unit Tests for:**
+- Business logic and algorithms
+- Data models and their methods
+- Utilities and helper functions
+- Service classes (e.g., API clients)
+- State management (Blocs, Providers, etc.)
 
-**Nutze Unit Tests NICHT für:**
-- UI-Komponenten (dafür Widget Tests)
-- Datenbankoperationen (dafür Integration Tests)
-- Navigation zwischen Screens
+**Do NOT Use Unit Tests for:**
+- UI components (use Widget Tests for that)
+- Database operations (use Integration Tests for that)
+- Navigation between screens
 
-### Beispiele
+### Examples
 
-#### Einfacher Unit Test
+#### Simple Unit Test
 
 ```dart
 // test/models/user_test.dart
@@ -163,7 +163,7 @@ void main() {
 }
 ```
 
-#### Service-Test mit Mocking
+#### Service Test with Mocking
 
 ```dart
 // test/services/api_service_test.dart
@@ -218,47 +218,47 @@ void main() {
 }
 ```
 
-### Worauf soll man achten?
+### What to Pay Attention To?
 
-- **AAA-Pattern**: Arrange, Act, Assert - strukturiere Tests klar
-- **Ein Test, ein Konzept**: Jeder Test sollte nur eine Sache testen
-- **Aussagekräftige Namen**: Test-Namen sollten das erwartete Verhalten beschreiben
-- **Isolation**: Tests sollen unabhängig voneinander laufen können
-- **Mocking**: Verwende Mocks für externe Abhängigkeiten
-- **Edge Cases**: Teste nicht nur den Happy Path, sondern auch Fehlerfälle
+- **AAA Pattern**: Arrange, Act, Assert - structure tests clearly
+- **One Test, One Concept**: Each test should only test one thing
+- **Meaningful Names**: Test names should describe the expected behavior
+- **Isolation**: Tests should be able to run independently of each other
+- **Mocking**: Use mocks for external dependencies
+- **Edge Cases**: Test not only the happy path, but also error cases
 
-### Besonderheiten und Voraussetzungen
+### Special Features and Prerequisites
 
 - **Package**: `dev_dependencies: flutter_test: sdk: flutter`
-- **Mocking**: Nutze `mockito` oder `mocktail` für komplexere Mocks
-- **Async Tests**: Verwende `async`/`await` für asynchrone Operationen
-- **Test-Ordnerstruktur**: Spiegele die `lib/`-Struktur in `test/` wider
+- **Mocking**: Use `mockito` or `mocktail` for more complex mocks
+- **Async Tests**: Use `async`/`await` for asynchronous operations
+- **Test Folder Structure**: Mirror the `lib/` structure in `test/`
 
 ---
 
 ## Widget Tests
 
-### Kurze Einführung
+### Brief Introduction
 
-Widget Tests testen einzelne Widgets und deren Interaktionen mit dem Benutzer. Sie sind Flutter-spezifisch und simulieren eine abgespeckte Flutter-Umgebung ohne echtes Rendering.
+Widget tests test individual widgets and their interactions with the user. They are Flutter-specific and simulate a lightweight Flutter environment without actual rendering.
 
-### Wann nutzt man Widget Tests?
+### When to Use Widget Tests?
 
-**Verwende Widget Tests für:**
-- Einzelne Custom Widgets
-- Widget-Verhalten bei State-Änderungen
-- User-Interaktionen (Taps, Eingaben)
-- Widget-Animationen
-- Layout-Verhalten bei verschiedenen Bildschirmgrößen
+**Use Widget Tests for:**
+- Individual custom widgets
+- Widget behavior during state changes
+- User interactions (taps, inputs)
+- Widget animations
+- Layout behavior on different screen sizes
 
-**Nutze Widget Tests NICHT für:**
-- Komplette Screens mit vielen Abhängigkeiten
-- Navigation zwischen verschiedenen Screens
-- Platform-spezifische Features
+**Do NOT Use Widget Tests for:**
+- Complete screens with many dependencies
+- Navigation between different screens
+- Platform-specific features
 
-### Beispiele
+### Examples
 
-#### Einfacher Widget Test
+#### Simple Widget Test
 
 ```dart
 // test/widgets/counter_widget_test.dart
@@ -290,7 +290,7 @@ void main() {
       
       // Act
       await tester.tap(find.byIcon(Icons.add));
-      await tester.pump(); // Rebuild auslösen
+      await tester.pump(); // Trigger rebuild
       
       // Assert
       expect(find.text('1'), findsOneWidget);
@@ -300,7 +300,7 @@ void main() {
 }
 ```
 
-#### Widget Test mit State Management
+#### Widget Test with State Management
 
 ```dart
 // test/widgets/user_profile_test.dart
@@ -348,7 +348,7 @@ void main() {
       
       // Act
       await tester.tap(find.byIcon(Icons.edit));
-      await tester.pumpAndSettle(); // Warten bis Animation fertig
+      await tester.pumpAndSettle(); // Wait until animation is finished
       
       // Assert
       expect(find.byType(AlertDialog), findsOneWidget);
@@ -358,48 +358,48 @@ void main() {
 }
 ```
 
-### Worauf soll man achten?
+### What to Pay Attention To?
 
-- **MaterialApp wrapper**: Wickle Widgets in MaterialApp für Theme-Unterstützung
-- **pumpAndSettle()**: Verwende für Animationen und asynchrone Operationen
-- **Finder**: Nutze verschiedene Finder-Methoden (byType, byKey, text, etc.)
-- **Key-Strategien**: Verwende Keys für bessere Testbarkeit
-- **MediaQuery**: Teste verschiedene Bildschirmgrößen mit MediaQuery.override
-- **Scroll-Verhalten**: Teste Scroll-Widgets mit tester.drag()
+- **MaterialApp wrapper**: Wrap widgets in MaterialApp for theme support
+- **pumpAndSettle()**: Use for animations and asynchronous operations
+- **Finder**: Use different finder methods (byType, byKey, text, etc.)
+- **Key Strategies**: Use keys for better testability
+- **MediaQuery**: Test different screen sizes with MediaQuery.override
+- **Scroll Behavior**: Test scroll widgets with tester.drag()
 
-### Besonderheiten und Voraussetzungen
+### Special Features and Prerequisites
 
-- **Pumping**: Verwende `pump()` für einzelne Frames, `pumpAndSettle()` für Animationen
-- **Async Handling**: Widget Tests laufen in einer speziellen Test-Umgebung
-- **Platform Channels**: Mock Platform Channels für native Funktionalitäten
-- **Fonts**: Asset-Fonts müssen in flutter_test konfiguriert werden
+- **Pumping**: Use `pump()` for single frames, `pumpAndSettle()` for animations
+- **Async Handling**: Widget tests run in a special test environment
+- **Platform Channels**: Mock platform channels for native functionalities
+- **Fonts**: Asset fonts must be configured in flutter_test
 
 ---
 
 ## Integration Tests
 
-### Kurze Einführung
+### Brief Introduction
 
-Integration Tests testen das Zusammenspiel verschiedener App-Bereiche und die komplette User Journey. Sie laufen auf echten Geräten oder Emulatoren und testen die App End-to-End.
+Integration tests test the interplay of different app areas and the complete user journey. They run on real devices or emulators and test the app end-to-end.
 
-### Wann nutzt man Integration Tests?
+### When to Use Integration Tests?
 
-**Verwende Integration Tests für:**
-- Komplette User Flows (Login → Dashboard → Feature)
-- Navigation zwischen verschiedenen Screens
-- Datenpersistierung und -synchronisation
-- Platform-spezifische Features
-- Performance-kritische Bereiche
-- App-Start und Deep Links
+**Use Integration Tests for:**
+- Complete user flows (Login → Dashboard → Feature)
+- Navigation between different screens
+- Data persistence and synchronization
+- Platform-specific features
+- Performance-critical areas
+- App startup and deep links
 
-**Nutze Integration Tests NICHT für:**
-- Einzelne Business Logic (dafür Unit Tests)
-- Einzelne Widget-Verhalten (dafür Widget Tests)
-- Zu granulare Testfälle
+**Do NOT Use Integration Tests for:**
+- Individual business logic (use Unit Tests for that)
+- Individual widget behavior (use Widget Tests for that)
+- Too granular test cases
 
-### Beispiele
+### Examples
 
-#### Einfacher Integration Test
+#### Simple Integration Test
 
 ```dart
 // integration_test/app_test.dart
@@ -413,16 +413,16 @@ void main() {
   
   group('App Integration Tests', () {
     testWidgets('complete user login flow', (tester) async {
-      // App starten
+      // Start app
       app.main();
       await tester.pumpAndSettle();
       
-      // Zur Login-Seite navigieren
+      // Navigate to login page
       expect(find.text('Welcome'), findsOneWidget);
       await tester.tap(find.text('Login'));
       await tester.pumpAndSettle();
       
-      // Login-Daten eingeben
+      // Enter login data
       await tester.enterText(
         find.byKey(Key('email_field')), 
         'test@example.com'
@@ -432,24 +432,24 @@ void main() {
         'password123'
       );
       
-      // Login-Button drücken
+      // Press login button
       await tester.tap(find.byKey(Key('login_button')));
-      await tester.pumpAndSettle(Duration(seconds: 3)); // Warten auf API-Call
+      await tester.pumpAndSettle(Duration(seconds: 3)); // Wait for API call
       
-      // Dashboard sollte sichtbar sein
+      // Dashboard should be visible
       expect(find.text('Dashboard'), findsOneWidget);
       expect(find.byKey(Key('user_avatar')), findsOneWidget);
     });
     
     testWidgets('navigation through main features', (tester) async {
-      // ... (Login-Flow wie oben)
+      // ... (Login flow as above)
       
-      // Feature 1 testen
+      // Test feature 1
       await tester.tap(find.text('Settings'));
       await tester.pumpAndSettle();
       expect(find.text('Settings'), findsOneWidget);
       
-      // Feature 2 testen
+      // Test feature 2
       await tester.tap(find.byIcon(Icons.arrow_back));
       await tester.pumpAndSettle();
       await tester.tap(find.text('Profile'));
@@ -460,7 +460,7 @@ void main() {
 }
 ```
 
-#### Integration Test mit echter API
+#### Integration Test with Real API
 
 ```dart
 // integration_test/api_integration_test.dart
@@ -474,14 +474,14 @@ void main() {
   
   group('API Integration Tests', () {
     testWidgets('should sync data with backend', (tester) async {
-      // App mit echter API-Konfiguration starten
+      // Start app with real API configuration
       app.main();
       await tester.pumpAndSettle();
       
-      // Login durchführen
+      // Perform login
       await performLogin(tester);
       
-      // Daten erstellen
+      // Create data
       await tester.tap(find.byKey(Key('create_item_button')));
       await tester.pumpAndSettle();
       
@@ -491,12 +491,12 @@ void main() {
       );
       
       await tester.tap(find.byKey(Key('save_button')));
-      await tester.pumpAndSettle(Duration(seconds: 5)); // Warten auf Sync
+      await tester.pumpAndSettle(Duration(seconds: 5)); // Wait for sync
       
-      // Verifizieren dass Item in Liste erscheint
+      // Verify that item appears in list
       expect(find.textContaining('Test Item'), findsOneWidget);
       
-      // App neu starten und Daten verifizieren
+      // Restart app and verify data
       await tester.binding.defaultBinaryMessenger.handlePlatformMessage(
         'flutter/platform', 
         null, 
@@ -507,7 +507,7 @@ void main() {
       await tester.pumpAndSettle();
       await performLogin(tester);
       
-      // Daten sollten noch da sein
+      // Data should still be there
       expect(find.textContaining('Test Item'), findsOneWidget);
     });
   });
@@ -521,48 +521,48 @@ Future<void> performLogin(WidgetTester tester) async {
 }
 ```
 
-### Worauf soll man achten?
+### What to Pay Attention To?
 
-- **Test-Isolation**: Jeder Test sollte mit sauberem Zustand starten
-- **Timeouts**: Verwende angemessene Wartezeiten für API-Calls
-- **Test-Daten**: Verwende eindeutige Test-Daten um Konflikte zu vermeiden
-- **Performance**: Integration Tests sind langsam - halte sie fokussiert
-- **Error Handling**: Teste auch Fehlerszenarien (Netzwerk-Ausfall, etc.)
-- **Cleanup**: Räume Test-Daten nach Tests auf
+- **Test Isolation**: Each test should start with a clean state
+- **Timeouts**: Use appropriate wait times for API calls
+- **Test Data**: Use unique test data to avoid conflicts
+- **Performance**: Integration tests are slow - keep them focused
+- **Error Handling**: Also test error scenarios (network failure, etc.)
+- **Cleanup**: Clean up test data after tests
 
-### Besonderheiten und Voraussetzungen
+### Special Features and Prerequisites
 
 - **Package**: `dev_dependencies: integration_test: sdk: flutter`
-- **Gerät/Emulator**: Tests laufen auf echten Geräten oder Emulatoren
-- **Firebase**: Integration Test Lab für Cloud-Testing
+- **Device/Emulator**: Tests run on real devices or emulators
+- **Firebase**: Integration Test Lab for cloud testing
 - **Command**: `flutter drive --driver=test_driver/integration_test.dart --target=integration_test/app_test.dart`
-- **CI/CD**: Spezielle Runner-Konfiguration für Emulator/Device-Tests
+- **CI/CD**: Special runner configuration for emulator/device tests
 
 ---
 ## State Management Tests (BLoC)
 
-### Kurze Einführung
+### Brief Introduction
 
-State Management Tests mit BLoC (Business Logic Component) testen die Geschäftslogik und Zustandsübergänge einer App isoliert von der UI. BLoCs verarbeiten Events und emittieren States über Streams, was spezielle Testing-Ansätze erfordert.
+State management tests with BLoC (Business Logic Component) test the business logic and state transitions of an app isolated from the UI. BLoCs process events and emit states via streams, which requires special testing approaches.
 
-### Wann nutzt man BLoC Tests?
+### When to Use BLoC Tests?
 
-**Verwende BLoC Tests für:**
-- Geschäftslogik und State-Übergänge
-- Event-Processing und State-Emission
-- Async-Operationen (API-Calls, Datenbankzugriffe)
-- Complex Business Rules und Validierungen
-- Stream-basierte Datenverarbeitung
-- Error Handling und Recovery-Szenarien
+**Use BLoC Tests for:**
+- Business logic and state transitions
+- Event processing and state emission
+- Async operations (API calls, database access)
+- Complex business rules and validations
+- Stream-based data processing
+- Error handling and recovery scenarios
 
-**Nutze BLoC Tests NICHT für:**
-- UI-spezifische Logik (dafür Widget Tests)
-- Reine Utility-Funktionen (dafür Unit Tests)
-- Navigation-Logic (dafür Integration Tests)
+**Do NOT Use BLoC Tests for:**
+- UI-specific logic (use Widget Tests for that)
+- Pure utility functions (use Unit Tests for that)
+- Navigation logic (use Integration Tests for that)
 
-### Beispiele
+### Examples
 
-#### Einfacher BLoC Test
+#### Simple BLoC Test
 
 ```dart
 // lib/blocs/counter_bloc.dart
@@ -683,7 +683,7 @@ void main() {
 }
 ```
 
-#### BLoC Test mit Repository und Mocking
+#### BLoC Test with Repository and Mocking
 
 ```dart
 // lib/blocs/user_bloc.dart
@@ -871,7 +871,7 @@ void main() {
 }
 ```
 
-#### Komplexer BLoC Test mit Stream-Subscriptions
+#### Complex BLoC Test with Stream Subscriptions
 
 ```dart
 // lib/blocs/chat_bloc.dart
@@ -1096,7 +1096,7 @@ void main() {
           bloc.add(ChatStarted('chat1'));
           await Future.delayed(Duration(milliseconds: 100));
           
-          // Simuliere neue Nachricht über Stream
+          // Simulate new message via stream
           final newMessage = Message(
             id: '3',
             text: 'New message!',
@@ -1108,7 +1108,7 @@ void main() {
         expect: () => [
           ChatConnecting(),
           ChatConnected(testMessages),
-          ChatConnected([...testMessages, any]), // Neue Nachricht hinzugefügt
+          ChatConnected([...testMessages, any]), // New message added
         ],
         wait: Duration(milliseconds: 300),
       );
@@ -1140,28 +1140,28 @@ void main() {
 }
 ```
 
-### Worauf soll man achten?
+### What to Pay Attention To?
 
-- **bloc_test Package**: Verwende `bloc_test` für strukturierte BLoC-Tests
-- **Stream-Management**: Schließe Streams ordnungsgemäß in `tearDown()`
-- **Async-Operations**: Verwende `wait` Parameter für zeitbasierte Tests
-- **State Equality**: Implementiere `Equatable` für korrekte State-Vergleiche
-- **Mocking Dependencies**: Mocke alle externen Abhängigkeiten (Repositories, Services)
-- **Event Sequencing**: Teste verschiedene Event-Sequenzen und deren State-Übergänge
-- **Error Scenarios**: Teste nicht nur Happy Path, sondern auch Fehlerfälle
-- **Memory Leaks**: Stelle sicher, dass BLoCs ordnungsgemäß geschlossen werden
+- **bloc_test Package**: Use `bloc_test` for structured BLoC tests
+- **Stream Management**: Close streams properly in `tearDown()`
+- **Async Operations**: Use `wait` parameter for time-based tests
+- **State Equality**: Implement `Equatable` for correct state comparisons
+- **Mocking Dependencies**: Mock all external dependencies (Repositories, Services)
+- **Event Sequencing**: Test different event sequences and their state transitions
+- **Error Scenarios**: Test not only happy path, but also error cases
+- **Memory Leaks**: Ensure BLoCs are properly closed
 
-### Besonderheiten und Voraussetzungen
+### Special Features and Prerequisites
 
 - **Package**: `dev_dependencies: bloc_test: ^9.1.0`
-- **Equatable**: Nutze `Equatable` für Events und States
-- **Async Testing**: Verwende `async`/`await` für asynchrone BLoC-Operationen
-- **Stream Testing**: Teste Stream-Subscriptions mit `StreamController`
-- **Timing**: Nutze `wait` und `skip` Parameter für zeitkritische Tests
-- **Cleanup**: Implementiere `close()` Methode für Resource-Cleanup
+- **Equatable**: Use `Equatable` for events and states
+- **Async Testing**: Use `async`/`await` for asynchronous BLoC operations
+- **Stream Testing**: Test stream subscriptions with `StreamController`
+- **Timing**: Use `wait` and `skip` parameters for time-critical tests
+- **Cleanup**: Implement `close()` method for resource cleanup
 
 ```dart
-// pubspec.yaml Dependencies - Prüfe aktuelle Versionen
+// pubspec.yaml Dependencies - Check current versions
 dependencies:
   flutter_bloc: ^9.1.1
   equatable: ^2.0.7
@@ -1176,29 +1176,29 @@ dev_dependencies:
 
 ## Golden Tests
 
-### Kurze Einführung
+### Brief Introduction
 
-Golden Tests (auch Screenshot Tests) vergleichen das gerenderte Aussehen von Widgets mit vorab gespeicherten Referenz-Screenshots. Sie stellen sicher, dass visuelle Änderungen bewusst und erwünscht sind.
+Golden tests (also screenshot tests) compare the rendered appearance of widgets with pre-stored reference screenshots. They ensure that visual changes are deliberate and desired.
 
-### Wann nutzt man Golden Tests?
+### When to Use Golden Tests?
 
-**Verwende Golden Tests für:**
-- Wichtige UI-Komponenten und deren visuelle Konsistenz
-- Design System Components
-- Responsive Layouts bei verschiedenen Bildschirmgrößen
-- Theme-Variationen (Light/Dark Mode)
-- Charts, Grafiken und komplexe Layouts
-- Regression Testing für UI-Änderungen
+**Use Golden Tests for:**
+- Important UI components and their visual consistency
+- Design system components
+- Responsive layouts on different screen sizes
+- Theme variations (Light/Dark Mode)
+- Charts, graphics, and complex layouts
+- Regression testing for UI changes
 
-**Nutze Golden Tests NICHT für:**
-- Hochdynamische Inhalte (aktuelle Zeit, etc.)
-- Tests die oft ändern (Prototyping-Phase)
-- Platform-spezifische Unterschiede
-- Interaktive Elemente (dafür Widget Tests)
+**Do NOT Use Golden Tests for:**
+- Highly dynamic content (current time, etc.)
+- Tests that change frequently (prototyping phase)
+- Platform-specific differences
+- Interactive elements (use Widget Tests for that)
 
-### Beispiele
+### Examples
 
-#### Einfacher Golden Test
+#### Simple Golden Test
 
 ```dart
 // test/golden/button_widget_test.dart
@@ -1247,7 +1247,7 @@ void main() {
 }
 ```
 
-#### Golden Test für verschiedene Themes
+#### Golden Test for Different Themes
 
 ```dart
 // test/golden/theme_test.dart
@@ -1299,7 +1299,7 @@ void main() {
 }
 ```
 
-#### Golden Test für responsive Design
+#### Golden Test for Responsive Design
 
 ```dart
 // test/golden/responsive_test.dart
@@ -1342,22 +1342,22 @@ void main() {
 }
 ```
 
-### Worauf soll man achten?
+### What to Pay Attention To?
 
-- **Deterministische Inhalte**: Verwende feste Test-Daten statt dynamischer Inhalte
-- **Font-Konsistenz**: Stelle sicher, dass Test-Fonts verfügbar sind
-- **Platform-Unterschiede**: Golden Tests sind platform-spezifisch
-- **Update-Workflow**: Nutze `--update-goldens` zum Aktualisieren der Referenz-Bilder
-- **CI/CD**: Golden Tests können in verschiedenen Umgebungen unterschiedlich aussehen
-- **Dateigröße**: Komprimiere Golden Files für bessere Performance
+- **Deterministic Content**: Use fixed test data instead of dynamic content
+- **Font Consistency**: Ensure test fonts are available
+- **Platform Differences**: Golden tests are platform-specific
+- **Update Workflow**: Use `--update-goldens` to update reference images
+- **CI/CD**: Golden tests can look different in various environments
+- **File Size**: Compress golden files for better performance
 
-### Besonderheiten und Voraussetzungen
+### Special Features and Prerequisites
 
-- **Command zum Updaten**: `flutter test --update-goldens`
-- **Ordnerstruktur**: Goldens werden in `test/` gespeichert
-- **CI/CD**: Nutze Docker oder spezielle Runner für konsistente Ergebnisse
-- **Debugging**: Nutze `debugDisableShadows = true` für konsistente Schatten
-- **Fonts**: Lade Test-Fonts in `flutter_test_config.dart`
+- **Update Command**: `flutter test --update-goldens`
+- **Folder Structure**: Goldens are stored in `test/`
+- **CI/CD**: Use Docker or special runners for consistent results
+- **Debugging**: Use `debugDisableShadows = true` for consistent shadows
+- **Fonts**: Load test fonts in `flutter_test_config.dart`
 
 ```dart
 // test/flutter_test_config.dart
@@ -1374,14 +1374,14 @@ Future<void> testExecutable(FutureOr<void> Function() testMain) async {
 
 # Asset Fonts in Flutter Tests
 
-## Kurze Einführung
+## Brief Introduction
 
-Bei Flutter Tests, insbesondere Golden Tests und Widget Tests, kann es zu Inkonsistenzen kommen, wenn Custom Fonts verwendet werden. Standardmäßig verwenden Tests das System-Font "Ahem", was zu unerwarteten Darstellungen führen kann. Diese Sektion zeigt, wie Asset Fonts korrekt in Tests geladen werden.
+With Flutter tests, especially Golden tests and Widget tests, inconsistencies can occur when custom fonts are used. By default, tests use the system font "Ahem", which can lead to unexpected displays. This section shows how to correctly load asset fonts in tests.
 
-## Das Problem
+## The Problem
 
 ```dart
-// Dieses Widget verwendet eine Custom Font
+// This widget uses a custom font
 class MyCustomText extends StatelessWidget {
   final String text;
   
@@ -1392,7 +1392,7 @@ class MyCustomText extends StatelessWidget {
     return Text(
       text,
       style: TextStyle(
-        fontFamily: 'Roboto', // Custom Font aus Assets
+        fontFamily: 'Roboto', // Custom font from assets
         fontSize: 16,
       ),
     );
@@ -1401,7 +1401,7 @@ class MyCustomText extends StatelessWidget {
 ```
 
 ```dart
-// Test ohne Font-Konfiguration - PROBLEM!
+// Test without font configuration - PROBLEM!
 testWidgets('should display custom text', (tester) async {
   await tester.pumpWidget(
     MaterialApp(
@@ -1411,14 +1411,14 @@ testWidgets('should display custom text', (tester) async {
   
   await expectLater(
     find.byType(MyCustomText),
-    matchesGoldenFile('custom_text.png') // Wird fehlschlagen!
+    matchesGoldenFile('custom_text.png') // Will fail!
   );
 });
 ```
 
-## Lösung 1: flutter_test_config.dart (Empfohlen)
+## Solution 1: flutter_test_config.dart (Recommended)
 
-Die eleganteste Lösung ist eine globale Test-Konfiguration:
+The most elegant solution is a global test configuration:
 
 ```dart
 // test/flutter_test_config.dart
@@ -1427,13 +1427,13 @@ import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 Future<void> testExecutable(FutureOr<void> Function() testMain) async {
-  // Lade alle Asset-Fonts vor den Tests
+  // Load all asset fonts before tests
   await loadAppFonts();
   return testMain();
 }
 
 Future<void> loadAppFonts() async {
-  // Lade spezifische Fonts
+  // Load specific fonts
   final robotoRegular = rootBundle.load('assets/fonts/Roboto-Regular.ttf');
   final robotoBold = rootBundle.load('assets/fonts/Roboto-Bold.ttf');
   final openSans = rootBundle.load('assets/fonts/OpenSans-Regular.ttf');
@@ -1452,9 +1452,9 @@ Future<void> loadAppFonts() async {
 }
 ```
 
-## Lösung 2: Per-Test Font Loading
+## Solution 2: Per-Test Font Loading
 
-Für spezielle Testfälle oder wenn nur einzelne Tests Custom Fonts benötigen:
+For special test cases or when only individual tests need custom fonts:
 
 ```dart
 // test/widgets/custom_text_test.dart
@@ -1466,7 +1466,7 @@ import 'package:my_app/widgets/custom_text.dart';
 void main() {
   group('CustomText Widget Tests', () {
     setUpAll(() async {
-      // Lade Fonts vor allen Tests in dieser Gruppe
+      // Load fonts before all tests in this group
       await loadCustomFonts();
     });
     
@@ -1479,7 +1479,7 @@ void main() {
         ),
       );
       
-      // Font ist jetzt korrekt geladen
+      // Font is now correctly loaded
       expect(find.text('Hello Custom Font!'), findsOneWidget);
       
       await expectLater(
@@ -1497,9 +1497,9 @@ Future<void> loadCustomFonts() async {
 }
 ```
 
-## Lösung 3: Font-Family Fallback
+## Solution 3: Font-Family Fallback
 
-Alternative Lösung durch Fallback-Fonts in Tests:
+Alternative solution through fallback fonts in tests:
 
 ```dart
 // test/widgets/text_with_fallback_test.dart
@@ -1512,14 +1512,14 @@ void main() {
     await tester.pumpWidget(
       MaterialApp(
         theme: ThemeData(
-          // Fallback-Font für Tests definieren
+          // Define fallback font for tests
           fontFamily: 'packages/flutter_test/fonts/MaterialIcons-Regular.otf',
         ),
         home: Scaffold(
           body: Text(
             'Test Text',
             style: TextStyle(
-              fontFamily: 'Roboto', // Fallback zu Theme-Font
+              fontFamily: 'Roboto', // Fallback to theme font
             ),
           ),
         ),
@@ -1531,9 +1531,9 @@ void main() {
 }
 ```
 
-## Erweiterte Font-Konfiguration
+## Extended Font Configuration
 
-Für komplexere Szenarien mit mehreren Font-Varianten:
+For more complex scenarios with multiple font variants:
 
 ```dart
 // test/flutter_test_config.dart
@@ -1547,7 +1547,7 @@ Future<void> testExecutable(FutureOr<void> Function() testMain) async {
 }
 
 Future<void> loadAllAppFonts() async {
-  // Roboto Font Family mit verschiedenen Gewichten
+  // Roboto Font Family with different weights
   final robotoFontLoader = FontLoader('Roboto');
   robotoFontLoader.addFont(rootBundle.load('assets/fonts/Roboto-Thin.ttf'));
   robotoFontLoader.addFont(rootBundle.load('assets/fonts/Roboto-Light.ttf'));
@@ -1566,7 +1566,7 @@ Future<void> loadAllAppFonts() async {
   final iconFontLoader = FontLoader('CustomIcons');
   iconFontLoader.addFont(rootBundle.load('assets/fonts/CustomIcons.ttf'));
   
-  // Alle Fonts parallel laden
+  // Load all fonts in parallel
   await Future.wait([
     robotoFontLoader.load(),
     openSansFontLoader.load(),
@@ -1577,9 +1577,9 @@ Future<void> loadAllAppFonts() async {
 }
 ```
 
-## Golden Tests mit Fonts
+## Golden Tests with Fonts
 
-Spezielle Berücksichtigung für Golden Tests:
+Special consideration for Golden tests:
 
 ```dart
 // test/golden/typography_test.dart
@@ -1590,7 +1590,7 @@ import 'package:my_app/widgets/typography_showcase.dart';
 void main() {
   group('Typography Golden Tests', () {
     setUpAll(() async {
-      // Fonts müssen vor Golden Tests geladen sein
+      // Fonts must be loaded before Golden tests
       await loadTypographyFonts();
     });
     
@@ -1598,13 +1598,13 @@ void main() {
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
-            backgroundColor: Colors.white, // Konsistenter Hintergrund
+            backgroundColor: Colors.white, // Consistent background
             body: TypographyShowcase(),
           ),
         ),
       );
       
-      // Stelle sicher, dass alle Fonts gerendert sind
+      // Ensure all fonts are rendered
       await tester.pumpAndSettle();
       
       await expectLater(
@@ -1634,7 +1634,7 @@ void main() {
 }
 
 Future<void> loadTypographyFonts() async {
-  // Lade alle für Typography benötigten Fonts
+  // Load all fonts needed for typography
   final fontLoader = FontLoader('Roboto')
     ..addFont(rootBundle.load('assets/fonts/Roboto-Regular.ttf'))
     ..addFont(rootBundle.load('assets/fonts/Roboto-Bold.ttf'))
@@ -1644,9 +1644,9 @@ Future<void> loadTypographyFonts() async {
 }
 ```
 
-## pubspec.yaml Konfiguration
+## pubspec.yaml Configuration
 
-Stelle sicher, dass die Fonts korrekt in pubspec.yaml definiert sind:
+Ensure fonts are correctly defined in pubspec.yaml:
 
 ```yaml
 flutter:
@@ -1678,23 +1678,23 @@ flutter:
 
 ## Troubleshooting
 
-**Problem**: Fonts werden in Tests nicht angezeigt
+**Problem**: Fonts are not displayed in tests
 ```dart
-// Lösung: Prüfe ob Font korrekt geladen wurde
+// Solution: Check if font is correctly loaded
 setUpAll(() async {
   await loadCustomFonts();
   
-  // Debug: Liste alle geladenen Fonts
+  // Debug: List all loaded fonts
   final fontManifest = await rootBundle.loadString('FontManifest.json');
   print('Available fonts: $fontManifest');
 });
 ```
 
-**Problem**: Golden Tests schlagen auf CI/CD fehl
+**Problem**: Golden tests fail on CI/CD
 ```dart
-// Lösung: Verwende konsistente Font-Loading Strategie
+// Solution: Use consistent font loading strategy
 Future<void> loadAppFonts() async {
-  // Immer alle Fonts laden, auch wenn nicht verwendet
+  // Always load all fonts, even if not used
   final fonts = [
     'Roboto-Regular.ttf',
     'Roboto-Bold.ttf',
@@ -1715,66 +1715,66 @@ Future<void> loadAppFonts() async {
 
 ## Best Practices
 
-1. **Globale Konfiguration**: Verwende `flutter_test_config.dart` für app-weite Font-Loading
-2. **Konsistenz**: Lade immer dieselben Fonts in derselben Reihenfolge
-3. **Fehlerbehandlung**: Implementiere Fallbacks für fehlende Fonts
-4. **Performance**: Lade Fonts nur einmal pro Test-Suite
-5. **CI/CD**: Teste Font-Loading in verschiedenen Umgebungen
-6. **Documentation**: Dokumentiere welche Fonts für Tests benötigt werden
+1. **Global Configuration**: Use `flutter_test_config.dart` for app-wide font loading
+2. **Consistency**: Always load the same fonts in the same order
+3. **Error Handling**: Implement fallbacks for missing fonts
+4. **Performance**: Load fonts only once per test suite
+5. **CI/CD**: Test font loading in different environments
+6. **Documentation**: Document which fonts are needed for tests
 
 ---
 
-## Fazit
+## Conclusion
 
-### Zusammenfassung
+### Summary
 
-Testing in Flutter und Dart ist ein vielschichtiges Thema, das verschiedene Ansätze für verschiedene Anforderungen bietet:
+Testing in Flutter and Dart is a multi-layered topic that offers different approaches for different requirements:
 
-- **Unit Tests** bilden das Fundament und testen isolierte Geschäftslogik
-- **Widget Tests** stellen sicher, dass UI-Komponenten korrekt funktionieren
-- **Integration Tests** verifizieren komplette User Journeys
-- **Golden Tests** bewachen die visuelle Konsistenz der Anwendung
+- **Unit Tests** form the foundation and test isolated business logic
+- **Widget Tests** ensure that UI components function correctly
+- **Integration Tests** verify complete user journeys
+- **Golden Tests** guard the visual consistency of the application
 
-Die **Test-Pyramide** sollte als Richtlinie dienen: Viele schnelle Unit Tests, moderate Anzahl an Widget Tests, wenige aber wichtige Integration Tests.
+The **Test Pyramid** should serve as a guideline: Many fast unit tests, moderate number of widget tests, few but important integration tests.
 
-**Wichtige Prinzipien:**
-- Tests sollen **schnell, isoliert und deterministisch** sein
-- **TDD/BDD** helfen bei der strukturierten Entwicklung
-- **Mocking** ermöglicht isolierte Tests
-- **Continuous Testing** sollte Teil der Entwicklungskultur sein
+**Important Principles:**
+- Tests should be **fast, isolated, and deterministic**
+- **TDD/BDD** help with structured development
+- **Mocking** enables isolated tests
+- **Continuous Testing** should be part of the development culture
 
-### Weiterführende Themen
+### Advanced Topics
 
-**Erweiterte Testing-Konzepte:**
-- **Test Coverage**: Nutze `flutter test --coverage` um Coverage zu messen
-- **Performance Testing**: Verwende `flutter driver` für Performance-Messungen
-- **Accessibility Testing**: Teste mit `semantics` und Screen Readern
-- **Flavor Testing**: Teste verschiedene App-Varianten (dev, staging, prod)
+**Extended Testing Concepts:**
+- **Test Coverage**: Use `flutter test --coverage` to measure coverage
+- **Performance Testing**: Use `flutter driver` for performance measurements
+- **Accessibility Testing**: Test with `semantics` and screen readers
+- **Flavor Testing**: Test different app variants (dev, staging, prod)
 
-**Tools und Packages:**
-- **Mockito/Mocktail**: Für erweiterte Mocking-Strategien
-- **Patrol**: Moderne Alternative zu Integration Tests
-- **Maestro**: Cross-Platform E2E Testing
-- **Firebase Test Lab**: Cloud-basiertes Testing auf echten Geräten
+**Tools and Packages:**
+- **Mockito/Mocktail**: For advanced mocking strategies
+- **Patrol**: Modern alternative to integration tests
+- **Maestro**: Cross-platform E2E testing
+- **Firebase Test Lab**: Cloud-based testing on real devices
 
-**Automatisierung:**
+**Automation:**
 - **CI/CD Pipelines**: GitHub Actions, GitLab CI, Bitrise
-- **Test Sharding**: Parallele Ausführung von Tests
-- **Automated Golden Updates**: Automatisches Update von Golden Files
-- **Test Analytics**: Tracking von Test-Performance und -Stabilität
+- **Test Sharding**: Parallel execution of tests
+- **Automated Golden Updates**: Automatic update of golden files
+- **Test Analytics**: Tracking test performance and stability
 
-**Fortgeschrittene Patterns:**
-- **Page Object Pattern**: Strukturierung von UI-Tests
-- **Robot Pattern**: Abstraktion von Test-Aktionen
-- **Test Data Builders**: Flexible Test-Daten-Erstellung
-- **Parameterized Tests**: Tests mit verschiedenen Input-Daten
+**Advanced Patterns:**
+- **Page Object Pattern**: Structuring UI tests
+- **Robot Pattern**: Abstraction of test actions
+- **Test Data Builders**: Flexible test data creation
+- **Parameterized Tests**: Tests with different input data
 
-**Monitoring und Debugging:**
-- **Test Flakiness Tracking**: Überwachung instabiler Tests
-- **Test Execution Analytics**: Analyse von Test-Laufzeiten
-- **Debug Tools**: Verwendung von `flutter inspector` in Tests
+**Monitoring and Debugging:**
+- **Test Flakiness Tracking**: Monitoring unstable tests
+- **Test Execution Analytics**: Analysis of test run times
+- **Debug Tools**: Using `flutter inspector` in tests
 
 ---
 
-## Zurück zum Inhalt:
-[Zurück zum Startpunkt](../README.md)
+## Back to Content:
+[Back to Starting Point](../README_EN.md)
