@@ -36,13 +36,21 @@ class LoggingAspect {
     private val logger = LoggerFactory.getLogger(this::class.java)
 
     @Around("@annotation(LogExecutionTime)")
-    fun logExecutionTime(joinPoint: ProceedingJoinPoint): Any {
+    fun logExecutionTime(joinPoint: ProceedingJoinPoint): Any? {
         val start = System.currentTimeMillis()
-        val result = joinPoint.proceed()
-        val duration = System.currentTimeMillis() - start
+        var result : Any?
 
-        logger.info("Method ${joinPoint.signature.toShortString()} executed in ${duration}ms")
+        try {
+            result = joinPoint.proceed()
+            val duration = System.currentTimeMillis() - start
+            logger.info("Method ${joinPoint.signature.toShortString()} executed in ${duration}ms")
+        } catch(e : Exception) {
+            val duration = System.currentTimeMillis() - start
+            logger.info("Method ${joinPoint.signature.toShortString()} has thrown Exception after ${duration}ms")
+            throw e
+        }
         return result
+
     }
 }
 ```

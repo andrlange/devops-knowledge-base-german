@@ -98,7 +98,7 @@ Eine thematisch strukturierte Übersicht aller bisher erfassten Inhalte. Die Pfa
 - [Flutter Framework](flutter_dart/FLUTTER_DART_INTRO.md)
 
 ### Kotlin
-- [Virtuelle Threads mit Kotlin & Spring Boot](spring_kotlin/VIRTUAL_THREADS.md)
+- [Nebenläufigkeit, Virtuelle Threads mit Kotlin & Spring Boot](spring_kotlin/VIRTUAL_THREADS.md)
 - [Null Handling in Kotlin, warum `!=null` vermeiden!](spring_kotlin/NULLHANDLING_KOTLIN.md)
 
 ### Spring & Spring Boot
