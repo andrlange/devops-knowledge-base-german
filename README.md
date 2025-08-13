@@ -7,6 +7,8 @@
   Run-Platformen (Heroku, Cloudfoundry und mehr)
 - Best Practices, Security, Observability
 
+[Hier direkt zu den Inhalten](#-inhaltsverzeichnis-der-wissenssammlung)
+
 Willkommen zu dieser fortlaufenden **Wissenssammlung rund um DevOps und Softwareentwicklung**. Diese Sammlung dient als strukturierter, wachsender Leitfaden für Entwickler*innen, IT-nahe Rollen und alle, die sich für moderne Softwarebereitstellung, Automatisierung und Entwicklungstechnologien interessieren.
 
 ## 🎯 Ziel
@@ -33,7 +35,7 @@ Dokumentationssystemen und Plattformen wie GitHub, GitLab oder IntelliJ, VS Code
 Markdown ist damit ein ideales Format für eine offene, durchsuchbare und gemeinsam pflegbare Wissenssammlung.
 
 
-## 🧭 Themenüberblick
+## Themenüberblick
 Die gewählten Sprachen, Frameworks Tool-Chain wurden gewählt, um möglichst schnell und effizient die Themen zu 
 erlernen, als auch mit wenig Resourcen eine Komplette Dev-Ops Umgebung mit Laufzeitumgebung aufzusetzen.
 
