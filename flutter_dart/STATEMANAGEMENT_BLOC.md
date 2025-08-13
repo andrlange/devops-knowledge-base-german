@@ -1,3 +1,4 @@
+# Language/Sprache : [EN](STATEMANAGEMENT_BLOC_EN.md) | [DE](STATEMANAGEMENT_BLOC.md)
 # 📦 Flutter State Management mit BLoC Pattern
 
 Flutter bietet viele Möglichkeiten zum State Management. Eines der etabliertesten Muster ist das **BLoC Pattern**, welches besonders bei mittleren bis großen Projekten für klare Trennung von Logik und UI sorgt.

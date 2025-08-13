@@ -1,3 +1,4 @@
+# Language/Sprache : [EN](RESPONSIVE_DESIGN_EN.md) | [DE](RESPONSIVE_DESIGN.md)
 # 📱 Responsive Design Patterns in Flutter mit Custom Breakpoints
 
 Flutter ist eine UI-Toolkit-Plattform, die auf vielen Geräten läuft – von kleinen Phones bis hin zu großen Desktops. Um nutzerfreundliche und skalierbare Layouts zu schaffen, ist **Responsive Design** essenziell.
