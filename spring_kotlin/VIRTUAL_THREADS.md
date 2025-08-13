@@ -1,3 +1,5 @@
+# Language/Sprache : [EN](VIRTUAL_THREADS_EN.md) | [DE](VIRTUAL_THREADS.md)
+
 # Spring Boot 3.5+ – Nebenläufigkeit, z.B. Scheduler mit Virtual Threads (Kotlin, Java 21+)
 
 ## 📝 Einleitung

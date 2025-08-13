@@ -48,13 +48,13 @@
 
     <!-- Thread 1 Execution -->
     <rect x="250" y="200" width="160" height="20" class="thread"/>
-    <text x="330" y="215" text-anchor="middle" class="boxlabel">Thread 1 läuft</text>
+    <text x="330" y="215" text-anchor="middle" class="boxlabel">Thread 1 runs</text>
 
     <!-- Thread 3 Execution -->
     <rect x="250" y="230" width="160" height="20" class="thread3"/>
-    <text x="330" y="245" text-anchor="middle" class="boxlabel">Thread 3 läuft</text>
+    <text x="330" y="245" text-anchor="middle" class="boxlabel">Thread 3 runs</text>
 
     <!-- Thread 2 Execution -->
     <rect x="460" y="200" width="160" height="20" class="thread"/>
-    <text x="540" y="215" text-anchor="middle" class="boxlabel">Thread 2 läuft</text>
+    <text x="540" y="215" text-anchor="middle" class="boxlabel">Thread 2 runs</text>
 </svg>

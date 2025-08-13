@@ -29,7 +29,7 @@
     <rect x="140" y="320" width="120" height="60" rx="10" fill="#50A050" stroke="#408040"/>
     <line x1="140" y1="340" x2="260" y2="340" stroke="#408040"/>
     <line x1="140" y1="360" x2="260" y2="360" stroke="#408040"/>
-    <text x="200" y="400" font-size="16" text-anchor="middle" fill="#408040" font-family="Arial">Datenbank</text>
+    <text x="200" y="400" font-size="16" text-anchor="middle" fill="#408040" font-family="Arial">Database</text>
 
     <!-- Marker für Pfeilspitzen -->
     <defs>

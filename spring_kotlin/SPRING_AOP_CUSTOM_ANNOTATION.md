@@ -1,6 +1,8 @@
+# Language/Sprache : [EN](SPRING_AOP_CUSTOM_ANNOTATION_EN.md) | [DE](SPRING_AOP_CUSTOM_ANNOTATION.md)
+
 # ⏱️ Laufzeitmessung von Funktionen mit Spring AOP und SLF4J (Kotlin)
 
-## 🧠 Was ist Spring AOP?
+## 🧠 Was ist Spring AOP (Kurz-Intro)?
 
 **AOP (Aspect-Oriented Programming)** ermöglicht es, Querschnittsfunktionen (Cross-Cutting-Concerns) wie Logging, 
 Performance-Messung, Security oder Transaktionen **modular** und **transparent** zu integrieren – ohne die Business-Logik zu verändern.

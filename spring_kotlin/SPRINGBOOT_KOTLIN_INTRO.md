@@ -1,3 +1,5 @@
+# Language/Sprache : [EN](SPRINGBOOT_KOTLIN_INTRO_EN.md) | [DE](SPRINGBOOT_KOTLIN_INTRO.md)
+
 # 🌱 Kurzes Intro in Spring Boot mit Kotlin
 
 Dieses Dokumentation beschreibt **Spring Boot 3.5+** in Kombination mit **Kotlin 2.x+**, um moderne, wartbare und 

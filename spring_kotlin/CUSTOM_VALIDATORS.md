@@ -1,3 +1,5 @@
+# Language/Sprache : [EN](CUSTOM_VALIDATORS_EN.md) | [DE](CUSTOM_VALIDATORS.md)
+
 # ✅ Custom Validator als Annotation für DTOs (Spring Boot + Kotlin)
 
 ## 🔍 Warum eigene Validatoren?

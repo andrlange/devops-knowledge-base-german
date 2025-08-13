@@ -1,3 +1,5 @@
+# Language/Sprache : [EN](CACHING_INTRO_EN.md) | [DE](CACHING_INTRO.md)
+
 # 🚀 Caching mit Spring Boot und Kotlin: Von Caffeine zu Redis (Valkey)
 
 ## 🧠 Einleitung: Warum Caching?

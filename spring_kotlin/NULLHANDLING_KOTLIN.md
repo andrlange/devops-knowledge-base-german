@@ -1,3 +1,5 @@
+# Language/Sprache : [EN](NULLHANDLING_KOTLIN_EN.md) | [DE](NULLHANDLING_KOTLIN.md)
+
 # Null-Handling in Kotlin: Professioneller Umgang mit Nullable-Typen in Spring Boot
 
 ## 📌 Einführung
