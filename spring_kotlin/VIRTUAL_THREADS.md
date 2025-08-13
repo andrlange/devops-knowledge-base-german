@@ -4,7 +4,8 @@
 
 ## 📝 Einleitung
 
-Dieses Projekt zeigt ein einfaches Beispiel, wie man mit **Spring Boot 3.5+**, **Kotlin** und **Java 21+ Virtual Threads** einen wiederkehrenden Scheduler umsetzt, der nebenläufige Aufgaben effizient ausführt. Die Ergebnisse der Threads werden gesammelt und zentral gespeichert – thread-sicher mit einer `ConcurrentHashMap`.
+Dieses Kapitel zeigt ein einfaches Beispiel, wie man mit **Spring Boot 3.5+**, **Kotlin** und **Java 21+ Virtual 
+Threads** einen wiederkehrenden Scheduler umsetzt, der nebenläufige Aufgaben effizient ausführt. Die Ergebnisse der Threads werden gesammelt und zentral gespeichert – thread-sicher mit einer `ConcurrentHashMap`.
 
 ---
 

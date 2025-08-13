@@ -4,7 +4,8 @@
 
 ## 📝 Introduction
 
-This project shows a simple example of how to implement a recurring scheduler with **Spring Boot 3.5+**, **Kotlin**, and **Java 21+ Virtual Threads** that efficiently executes concurrent tasks. The results of the threads are collected and stored centrally – thread-safe with a `ConcurrentHashMap`.
+This chapter shows a simple example of how to implement a recurring scheduler with **Spring Boot 3.5+**, **Kotlin**, 
+and **Java 21+ Virtual Threads** that efficiently executes concurrent tasks. The results of the threads are collected and stored centrally – thread-safe with a `ConcurrentHashMap`.
 
 ---
 
