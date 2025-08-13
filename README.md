@@ -111,7 +111,7 @@ Eine thematisch strukturierte Übersicht aller bisher erfassten Inhalte. Die Pfa
 - [Flutter State Management im Überblick mit BLoC Patterns](flutter_dart/STATEMANAGEMENT_BLOC.md)
 - [Responsive Design Pattern für UIs mit Flutter](flutter_dart/RESPONSIVE_DESIGN.md)
 - [Clean Architecture, Services und Asynchronität mit Streams](flutter_dart/CLEAN_ARCHITECTURE.md)
-- [Testing in Flutter-Projekten](flutter_dart/TESTING.md)
+- [Testing in Flutter-Projekten](flutter_dart/FLUTTER_DART_TESTING.md)
 
 ---
 
