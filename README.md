@@ -7,7 +7,7 @@
   Run-Platformen (Heroku, Cloudfoundry und mehr)
 - Best Practices, Security, Observability
 
-[Hier direkt zu den Inhalten](#-inhaltsverzeichnis-der-wissenssammlung)
+[Hier direkt zu den Inhalten](#inhaltsverzeichnis-der-wissenssammlung)
 
 Willkommen zu dieser fortlaufenden **Wissenssammlung rund um DevOps und Softwareentwicklung**. Diese Sammlung dient als strukturierter, wachsender Leitfaden für Entwickler*innen, IT-nahe Rollen und alle, die sich für moderne Softwarebereitstellung, Automatisierung und Entwicklungstechnologien interessieren.
 
@@ -84,7 +84,7 @@ Alle Inhalte sind modular aufgebaut und können stetig erweitert werden. Beiträ
 
 ---
 
-# 🗂️ Inhaltsverzeichnis der Wissenssammlung
+# Inhaltsverzeichnis der Wissenssammlung
 
 Eine thematisch strukturierte Übersicht aller bisher erfassten Inhalte. Die Pfade sind relativ, sodass sie direkt in gängigen Git-Repository-Viewern wie GitHub oder GitLab funktionieren.
 
